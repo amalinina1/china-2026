@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Китай 2026</title>
+<meta name="description" content="Гуанчжоу, Яншо, Фэнхуан, Чжанцзяцзе — дневник путешествия, октябрь 2026 · Potopisni dnevnik, oktober 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Onest:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap&text=%C2%B7%E3%80%87%E4%B8%83%E4%B8%89%E4%B8%AD%E4%BA%8C%E5%85%AC%E5%85%AD%E5%87%A4%E5%87%B0%E5%88%98%E5%8D%81%E5%8D%97%E5%8D%B0%E5%8F%A4%E5%9B%AD%E5%9B%BD%E5%9C%BA%E5%9F%8E%E5%A0%82%E5%A1%94%E5%A4%9C%E5%A4%A7%E5%A4%A9%E5%A5%87%E5%A6%82%E5%A7%90%E5%AD%90%E5%AE%B6%E5%AF%BA%E5%B1%B1%E5%B3%B0%E5%B7%9E%E5%B9%BF%E5%BC%A0%E5%BF%B5%E6%84%8F%E6%96%B9%E6%97%8F%E6%99%AF%E6%9C%8D%E6%9C%94%E6%A0%91%E6%A2%AF%E6%A5%BC%E6%A6%95%E6%AD%A6%E6%B2%B3%E6%B5%B7%E6%BA%90%E7%95%8C%E7%99%BE%E7%A5%A0%E7%A7%80%E7%AB%B9%E7%AD%8F%E7%BA%AA%E8%8A%B1%E8%8B%97%E8%A1%97%E8%A2%81%E8%A5%BF%E8%B1%A1%E8%B6%8A%E9%81%87%E9%95%87%E9%95%BF%E9%97%A8%E9%98%B3%E9%99%88%E9%99%B5%E9%A5%B0%E9%BE%99">
+<style>
+/* Layout: a scroll journey — hero with route map, then per city: route leg card → full-bleed cover with glass caption → sight map → sights (text panel + photo slider), all over drifting blurred orbs */
+:root{
+  --bg:#F3EFE8;
+  --bg2:#EAE4DA;
+  --ink:#23252A;
+  --ink2:#565961;
+  --ink3:#8B8D93;
+  --line:rgba(35,37,42,.12);
+  --glass:rgba(250,248,243,.56);
+  --glass-sm:rgba(250,248,243,.52);
+  --nav:rgba(252,250,246,.7);
+  --edge:rgba(253,251,247,.7);
+  --acc:#C63E28;
+  --acc-ink:#FBF7F0;
+  --o1:#E2674A; --o2:#E9B44C; --o3:#F2A88B;
+  --f-d:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;
+  --f-b:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-zh:'Noto Serif SC','Songti SC','STSong','SimSun',serif;
+  --r-lg:32px; --r-md:22px;
+  --gut:max(18px,env(safe-area-inset-left,0px));
+  --gutr:max(18px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:8px}
+.zh{font-family:var(--f-zh);font-weight:600}
+.eyebrow{font:600 12px/1.2 var(--f-b);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:0 0 14px}
+.mono{font-variant-numeric:tabular-nums}
+
+/* ---------- background orbs ---------- */
+.orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px) saturate(150%);opacity:.55;transition:background-color 1.6s ease}
+.orb.o1{width:56vmax;height:56vmax;left:-18vmax;top:-16vmax;background:var(--o1);animation:drift1 38s ease-in-out infinite alternate}
+.orb.o2{width:48vmax;height:48vmax;right:-16vmax;top:28vh;background:var(--o2);animation:drift2 44s ease-in-out infinite alternate}
+.orb.o3{width:42vmax;height:42vmax;left:22vw;bottom:-24vmax;background:var(--o3);animation:drift3 50s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(12vw,10vh) scale(1.1)}}
+@keyframes drift2{to{transform:translate(-10vw,-8vh) scale(.92)}}
+@keyframes drift3{to{transform:translate(-8vw,-14vh) scale(1.12)}}
+main,header.hero,footer,section{position:relative;z-index:1}
+
+/* ---------- glass ---------- */
+.glass-lg{background:var(--glass);-webkit-backdrop-filter:blur(64px) saturate(150%);backdrop-filter:blur(64px) saturate(150%);
+  border:1px solid var(--edge);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(253,251,247,.75),0 24px 70px -28px rgba(35,37,42,.32)}
+.gbtn{width:46px;height:46px;border-radius:999px;border:1px solid var(--edge);background:var(--glass-sm);
+  -webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:transform .2s,background .2s}
+.gbtn:hover{background:rgba(250,248,243,.85);transform:translateY(-1px)}
+.gbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gbtn[disabled]{opacity:.35;cursor:default;transform:none}
+
+/* ---------- floating nav ---------- */
+.nav{position:fixed;z-index:20;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:var(--nav);
+  -webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);
+  border:1px solid var(--edge);box-shadow:0 12px 40px -16px rgba(35,37,42,.35);max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{display:flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;text-decoration:none;font:500 14px/1 var(--f-b);white-space:nowrap;color:var(--ink2);transition:background .3s,color .3s}
+.nav a .zh{font-size:15px;color:var(--acc);transition:color .3s}
+.nav a:hover{color:var(--ink)}
+.nav a.on{background:var(--ink);color:var(--bg)}
+.nav a.on .zh{color:var(--bg)}
+.nav .brand{font:600 15px/1 var(--f-zh);color:var(--ink);padding-right:12px;margin-right:2px;border-right:1px solid var(--line);border-radius:999px 0 0 999px}
+.nav .prog{position:absolute;left:18px;right:18px;bottom:2px;height:2px;border-radius:2px;background:var(--line);overflow:hidden;pointer-events:none}
+.nav .prog i{display:block;height:100%;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* ---------- hero ---------- */
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.hero{max-width:1320px;margin:0 auto;padding:120px var(--gutr) 80px var(--gut);display:grid;grid-template-columns:1fr 1.02fr;gap:56px;align-items:center}
+.hero-text{position:relative;min-width:0}
+.hero h1{font:600 clamp(84px,12vw,176px)/.86 var(--f-d);letter-spacing:-.02em;margin:0;position:relative}
+.hero h1 em{display:block;font:italic 500 clamp(26px,3vw,40px)/1.2 var(--f-d);letter-spacing:.01em;color:var(--ink2);margin-top:12px}
+.zh-big{position:absolute;left:-.04em;top:-.55em;font-family:var(--f-zh);font-weight:600;font-size:.62em;color:var(--acc);opacity:.16;letter-spacing:.05em;pointer-events:none;z-index:-1}
+.hero .dates{font:500 19px/1.4 var(--f-b);margin:28px 0 22px;color:var(--ink)}
+.route-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;counter-reset:r}
+.route-chips li{display:flex;align-items:center;gap:8px}
+.route-chips li+li::before{content:"";width:18px;height:1px;background:var(--ink3)}
+.route-chips a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;text-decoration:none;font:500 15px/1 var(--f-b);
+  background:var(--glass-sm);-webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);border:1px solid var(--edge)}
+.route-chips .zh{color:var(--acc)}
+.stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:8px 34px;margin:40px 0 0}
+.stats div{display:flex;flex-direction:column-reverse}
+.stats dt{font:500 12px/1.3 var(--f-b);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.stats dd{margin:0;font:600 44px/1 var(--f-d);font-variant-numeric:tabular-nums}
+.hero-visual{position:relative;min-width:0;padding:44px 20px}
+.hero-photos .hp{position:absolute;margin:0;width:38%;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(35,37,42,.45)}
+.hero-photos .hp img{width:100%;height:auto}
+.hp0{left:-2%;top:0;transform:rotate(-5deg)}
+.hp1{right:-1%;top:4%;transform:rotate(4deg)}
+.hp2{left:4%;bottom:-2%;transform:rotate(3deg)}
+.hp3{right:3%;bottom:0;transform:rotate(-4deg)}
+.map-card{position:relative;padding:20px 20px 16px;max-width:520px;margin:0 auto}
+.card-h{display:flex;justify-content:space-between;gap:12px;font:600 12px/1.2 var(--f-b);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:2px 6px 10px}
+.legend{list-style:none;display:flex;gap:18px;margin:8px 6px 0;padding:0;font-size:13px;color:var(--ink2)}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{width:26px;height:0;border-top:2px dashed var(--ink2)}
+.legend .lg-train{border-top-style:dotted;border-top-width:3px}
+
+/* ---------- China map ---------- */
+.cmap{width:100%;height:auto;display:block;border-radius:22px;overflow:hidden}
+.cmap .sea{fill:rgba(112,150,170,.12)}
+.cmap .grat{fill:none;stroke:rgba(35,37,42,.07)}
+.cmap .land{fill:rgba(243,239,232,.85);stroke:rgba(35,37,42,.28);stroke-linejoin:round}
+.cmap .sea-l{font-family:var(--f-d);font-style:italic;fill:rgba(60,90,110,.6)}
+.cmap .leg{fill:none;stroke-linecap:round}
+.cmap .leg.done{stroke:var(--ink2);stroke-dasharray:1.2 2.4}
+.cmap .leg.done.flight{stroke-dasharray:4 3}
+.cmap .leg.back{stroke:var(--ink3);stroke-dasharray:4 3;opacity:.7}
+.cmap .leg.todo{stroke:var(--ink3);stroke-dasharray:1 3;opacity:.45}
+.cmap .leg.now{stroke:var(--acc);stroke-dasharray:100;stroke-dashoffset:0;transition:stroke-dashoffset 1.8s cubic-bezier(.6,.1,.2,1)}
+.js .cmap:not(.on) .leg.now{stroke-dashoffset:100}
+.cmap .city{fill:var(--bg);stroke:var(--ink)}
+.cmap .city.now{fill:var(--acc);stroke:var(--bg)}
+.cmap .city.next{stroke:var(--ink3)}
+.cmap .pulse{fill:var(--acc);opacity:.25;transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{from{transform:scale(.4);opacity:.45}to{transform:scale(1.3);opacity:0}}
+.cmap .city-l{font-family:var(--f-b);font-weight:600;fill:var(--ink);paint-order:stroke;stroke:rgba(243,239,232,.9);stroke-width:3px;stroke-linejoin:round}
+.cmap.south .city-l{stroke-width:1.4px}
+.cmap .prov-l{font:600 6.5px var(--f-b);letter-spacing:.3em;fill:rgba(35,37,42,.28)}
+.cmap .city-l.next{fill:var(--ink3);font-weight:500}
+.cmap .city-l.now{fill:var(--acc)}
+
+/* ---------- interlude ---------- */
+.interlude{max-width:1320px;margin:0 auto;padding:40px var(--gutr) 40px var(--gut);display:grid;grid-template-columns:minmax(300px,420px) minmax(0,1fr);gap:28px;align-items:center}
+.inter-card{padding:32px}
+.inter-card h2,.ch-card h2{font:600 clamp(40px,5vw,64px)/1 var(--f-d);margin:0 0 18px;letter-spacing:-.01em;text-wrap:balance}
+.inter-card h2 em,.ch-card h2 em{display:block;font:italic 500 .5em/1.3 var(--f-d);color:var(--ink2);margin-top:6px}
+.ru{margin:0 0 12px;max-width:62ch}
+.en{margin:0;color:var(--ink2);font-size:15px;line-height:1.55;max-width:62ch}
+
+/* ---------- chapter ---------- */
+.chapter{max-width:1320px;margin:0 auto;padding:110px var(--gutr) 40px var(--gut);display:flex;flex-direction:column;gap:30px}
+.leg-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:center;padding:30px}
+.leg-route{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;font:600 clamp(36px,4.6vw,60px)/1.05 var(--f-d);margin:0;letter-spacing:-.01em}
+.leg-route svg{width:44px;height:14px;fill:none;stroke:var(--acc);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.leg-en{font:italic 500 22px/1.3 var(--f-d);color:var(--ink2);margin:8px 0 26px}
+.leg-meta{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 32px}
+.leg-meta li{display:flex;flex-direction:column;gap:2px}
+.leg-meta span{font:500 12px/1.2 var(--f-b);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.leg-meta b{font:600 18px/1.3 var(--f-b);font-variant-numeric:tabular-nums}
+.leg-card .cmap.south{max-height:480px;aspect-ratio:250/300;width:auto;justify-self:center}
+.leg-card .cmap.full{max-height:520px;aspect-ratio:600/850;width:auto;justify-self:center}
+
+.ch-head{position:relative}
+.ch-cover{border-radius:40px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(35,37,42,.45)}
+.ch-cover img{width:100%;height:auto}
+.ch-card{position:absolute;left:28px;bottom:28px;background:rgba(250,248,243,.72);max-width:min(580px,calc(100% - 56px));padding:34px 34px 30px;overflow:hidden}
+.ch-zh{position:absolute;right:-6px;top:-30px;font:600 150px/1 var(--f-zh);color:var(--acc);opacity:.13;pointer-events:none;letter-spacing:-.04em}
+.ch-card h2{font-size:clamp(52px,6.4vw,92px);line-height:.95}
+
+.places{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;padding:26px;align-items:center}
+.places-map{min-width:0}
+.lmap{width:100%;height:auto;display:block;border-radius:22px;background:rgba(243,239,232,.55)}
+.lgrid{stroke:rgba(35,37,42,.07);stroke-width:1}
+.lroute{fill:none;stroke:var(--acc);stroke-width:2.4;stroke-dasharray:7 7;stroke-linecap:round;opacity:.75}
+.lpin{cursor:pointer;text-decoration:none}
+.lpin circle{fill:var(--acc);stroke:var(--bg);stroke-width:3;transition:fill .3s}
+.lpin .lnum{font:600 15px var(--f-b);fill:var(--acc-ink)}
+.lpin .llbl{font:600 16px var(--f-b);fill:var(--ink);paint-order:stroke;stroke:rgba(243,239,232,.95);stroke-width:5px;stroke-linejoin:round}
+.lpin.on circle{fill:var(--ink)}
+.lpin:hover circle{fill:var(--ink)}
+.compass circle{fill:rgba(243,239,232,.8);stroke:var(--ink3)}
+.compass path{fill:var(--ink3)}.compass path.n{fill:var(--acc)}
+.note{font-size:12.5px;color:var(--ink3);margin:10px 4px 0}
+.places-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.places-list a{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:18px;text-decoration:none;transition:background .25s}
+.places-list a:hover,.places-list a.on{background:rgba(250,248,243,.75)}
+.pn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:var(--acc-ink);font:600 14px/1 var(--f-b)}
+.places-list a.on .pn{background:var(--ink)}
+.pt{display:flex;flex-direction:column;min-width:0}
+.pt b{font:600 16px/1.3 var(--f-b)}
+.pt small{font-size:13px;color:var(--ink2)}
+
+/* ---------- sight ---------- */
+.sight{display:grid;grid-template-columns:minmax(300px,420px) minmax(0,1fr);gap:26px;align-items:center;scroll-margin-top:90px;padding-top:20px}
+.sight.flip{grid-template-columns:minmax(0,1fr) minmax(300px,420px)}
+.sight.flip .sight-text{order:2}
+.sight-text{padding:30px 30px 26px;min-width:0}
+.s-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.s-num{font:600 46px/1 var(--f-d);color:var(--acc);font-variant-numeric:tabular-nums}
+.s-date{font:500 12px/1.3 var(--f-b);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:right}
+.sight h3{font:600 clamp(32px,3.4vw,46px)/1.02 var(--f-d);margin:0;text-wrap:balance}
+.s-en{font:italic 500 21px/1.3 var(--f-d);color:var(--ink2);margin:8px 0 18px}
+.s-en .zh{font-style:normal;font-size:16px;color:var(--acc);margin-left:6px;white-space:nowrap}
+.bi p{margin:0}
+.bi p+p{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.bi .en{font-size:15px}
+.s-count{font:500 12px/1 var(--f-b);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:18px 0 0}
+
+.note-me{margin:20px 0 0;padding:18px 20px 16px;border-radius:20px;position:relative;
+  background:rgba(198,62,40,.07);-webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);border:1px solid rgba(198,62,40,.18)}
+.note-me::before{content:"\201C";position:absolute;right:16px;top:-6px;font:600 72px/1 var(--f-d);color:var(--acc);opacity:.35}
+.nm-h{font:600 11.5px/1.2 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 8px}
+.nm-ru{font:italic 500 22px/1.32 var(--f-d);margin:0 0 8px;color:var(--ink)}
+.nm-sl{font:italic 500 18px/1.35 var(--f-d);margin:0;color:var(--ink2)}
+
+/* ---------- slider ---------- */
+.slider{position:relative;min-width:0}
+.track{display:flex;align-items:center;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:6px 2px 10px;border-radius:26px;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{--sh:clamp(300px,64vh,660px);--mw:88%;flex:none;margin:0;height:auto;width:min(calc(var(--sh) * var(--ar)),var(--mw));aspect-ratio:var(--ar);border-radius:24px;overflow:hidden;scroll-snap-align:start;background:var(--bg2);box-shadow:0 18px 44px -22px rgba(35,37,42,.45)}
+.single .slide{--mw:100%}
+.slide .zoom{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+.slide img{width:100%;height:100%;object-fit:contain;transition:transform .8s ease}
+.slide .zoom:hover img{transform:scale(1.015)}
+.slide .zoom:focus-visible{outline:2px solid var(--acc);outline-offset:-4px;border-radius:24px}
+.sl-ui{display:flex;align-items:center;gap:12px;margin-top:10px}
+.count{font:500 14px/1 var(--f-b);color:var(--ink2);font-variant-numeric:tabular-nums;min-width:56px;text-align:center}
+.count b{color:var(--ink);font-weight:600}
+
+/* ---------- lightbox ---------- */
+.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;max-height:none;background:rgba(35,37,42,.84);color:var(--bg)}
+.lb::backdrop{background:rgba(35,37,42,.5);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.lb[open]{display:grid;place-items:center}
+.lb img{max-width:92vw;max-height:86vh;border-radius:16px;object-fit:contain}
+.lb .gbtn{position:fixed;background:rgba(250,248,243,.18);color:var(--bg);border-color:rgba(250,248,243,.25)}
+.lb .lb-x{top:calc(18px + env(safe-area-inset-top,0px));right:calc(18px + env(safe-area-inset-right,0px))}
+.lb .lb-p{left:calc(18px + env(safe-area-inset-left,0px));top:50%}
+.lb .lb-n{right:calc(18px + env(safe-area-inset-right,0px));top:50%}
+.lb .lb-c{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);font:500 14px var(--f-b);font-variant-numeric:tabular-nums;opacity:.8}
+
+/* ---------- footer ---------- */
+.foot{max-width:1320px;margin:0 auto;padding:90px var(--gutr) 70px var(--gut)}
+.foot-card{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:34px;align-items:center;padding:26px}
+.zh-sign{font:600 30px/1.2 var(--f-zh);color:var(--acc);margin:0 0 8px}
+.foot p{margin:0 0 14px;color:var(--ink2)}
+.top-link{display:inline-block;padding:11px 20px;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none;font:500 14px/1 var(--f-b)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;padding-top:100px;gap:30px}
+  .hero-visual{padding:0}
+  .hero-photos{display:flex;gap:10px;margin-bottom:14px}
+  .hero-photos .hp{position:static;width:auto;flex:1;transform:none;border-radius:18px}
+  .leg-card,.places,.foot-card{grid-template-columns:1fr}
+  .leg-card .cmap.south,.leg-card .cmap.full{max-height:420px}
+  .sight,.sight.flip,.interlude{grid-template-columns:1fr}
+  .sight.flip .sight-text{order:0}
+  .ch-card{position:relative;left:auto;bottom:auto;margin:-90px 14px 0;max-width:none}
+  .ch-cover{border-radius:30px}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .stats{grid-template-columns:repeat(2,auto)}
+  .chapter{padding-top:80px;gap:22px}
+  .leg-card,.sight-text,.inter-card,.ch-card{padding:22px}
+  .places{padding:16px}
+  .slide{--sh:clamp(260px,56vh,480px);--mw:84vw}
+  .ch-zh{font-size:110px}
+  .nav a{padding:8px 11px}
+  .nav a .nl{display:none}
+  .nav a .zh{font-size:17px}
+  .leg-meta{grid-template-columns:repeat(2,auto)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .orb,.cmap .pulse{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .cmap .leg.now{transition:none}
+  .js .cmap:not(.on) .leg.now{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="land" d="M824.7,920L826.9,911.9L828.4,908.4L829.5,904.6L830,899.7L833.7,898.4L837.2,896.3L839.1,896.5L840.9,897L845.2,896L846.8,895.9L846.8,895.9L852,897.7L863.3,904.4L867.4,906L871.7,907.3L875.1,907.6L878.3,906.1L879.5,904.6L881.9,900.4L884.3,900L885.9,901.4L886.9,903.5L887.5,906.3L886.8,909.4L884.4,912.1L883,915.4L882.5,920L824.7,920ZM843.8,752.5L841.7,756.8L840,761.3L839.3,765.5L839.4,769.9L838.9,773.8L838.1,777.7L834.8,776.6L833,773.8L832.7,769.2L830.2,763.7L829.4,762.1L826,759L822.9,757.4L820.5,755.1L820.8,755.3L819,752.2L817.7,749L814.9,739.6L814,737.4L812.8,735.3L812.4,733.2L812.8,731L814,727.6L814.7,724.2L814.1,719.5L814.3,714.9L815.3,712.8L831,684.6L835.3,678.6L838,675.6L840.1,672.3L842.2,668L844.8,664.2L846.7,663L855.7,659.5L858.5,656.1L860.8,655.1L863.3,655.2L865,656.8L866.4,658.6L868,659.7L872,661.5L873.8,663.3L874.5,666.4L872.1,669.2L870.9,671.9L870.7,674.8L871.1,678.7L871.1,682.6L868.1,691.7L864.9,697.4L864,700.2L862.9,707.3L861,714.4L859.4,723.2L856.8,732.4L855.2,736.3L853.3,739.9L848.8,746.8ZM504.7,847L506.3,848.6L507.3,850.9L508.3,855.1L508.8,859L505.4,861.5L502.4,862.5L496.4,872L495,874.9L494.1,876.2L493.7,877.5L493.8,878.8L492.3,883.4L490.8,889L490,891.2L488.3,893L486,893.9L484.7,894L483.3,894.5L480.1,897.5L476.5,899.8L477.1,900.9L477.1,901.9L475.5,903L473.8,902.8L468.7,903.6L466.8,905.4L464.9,908.5L464.2,908.9L461.2,909.6L458.7,909.9L454.8,907.7L452.8,907.1L447.5,906.1L442.3,904.7L438.7,903L431.4,898.7L430.5,891.2L429.2,887.1L429.2,885.6L429.7,872.9L430.2,871.6L431.1,870.3L434.4,867.5L438.1,865.2L443.4,860.5L447.4,858.3L450.7,855.3L448.7,855.4L447.3,855L448.7,852.4L450.2,850.9L451.9,850.2L455.4,850.7L458.6,850.2L460.9,847.8L463.2,847.3L471.8,848.1L477.7,847L480.6,844.9L482,844.7L486.4,845.4L488,847.7L487.9,846.1L488,844.7L488.9,844.8L494.6,847.6L494.6,844.2L494.9,843.3L496.7,841.8L497.6,841.9L499.9,844.6L501.9,846.2ZM1020,291.2L1019.9,291L1020,290.7L1020,291.2ZM1020,208.2L1018.7,207.8L1017,207.8L1016.4,204.3L1018.2,200.2L1020,198.7L1020,208.2ZM1020,159L1017.8,159.9L1016.4,162.6L1014.9,163.5L1012.6,158.1L1009,158L1003.2,153.2L1000.7,154.1L1000.1,156L996.9,160.5L992.5,164L991,164.5L989.5,164.3L989.7,163.3L987.9,159.2L980.9,157.6L978.4,155.9L977,155.5L983.9,151L985.7,150.1L984.4,149.1L983,148.6L977.3,149.3L974.4,147.8L970,148.3L967.1,147.1L973.3,142.7L973.5,140L973.4,138L976.6,132.1L979.7,128.8L987.8,124.2L991.4,123.5L993.9,123.7L996,123.3L993.8,121.5L991.6,120.7L987.4,120.8L983.1,118.1L982.7,115.3L991.2,97.3L991.3,95.7L989.9,91.3L989.6,87L983.4,84.5L980.8,84.2L973.1,79.4L969.9,76.9L968.7,77.6L968.5,81.5L967.4,82.4L965.3,83.2L964.3,78.7L962.6,75.5L957.5,72.2L955.6,70.4L956.5,66.5L956.1,66.2L955.7,65.8L952.9,69.7L947.5,73.3L935.9,74.1L932.3,71.5L931,73.3L929.9,75.7L926.9,76.5L922.2,76.7L919.5,78.2L918.1,80L911.5,80.6L909.1,82.9L905,83.8L888.1,93.9L884.5,98.2L881,103.2L878.5,105.7L876.3,107.4L874.4,108.2L872.3,109.9L870.4,110.1L868.4,109.3L866.1,109.6L864.6,111.7L865.8,114.4L865.2,115.6L860.8,117L854.1,118L851.4,119.8L850.4,120.8L848.9,121.3L847.5,117.8L847,113.2L849.8,112.1L852.2,111.5L866.2,105.1L864.5,100.3L865.7,98.1L868.8,94.8L870.9,93L869.7,92.4L860.6,93.6L855.3,93.5L852.7,93.1L853.5,90.2L853,87.3L852.4,86.2L857,82.9L859.2,82L860.8,82.1L860.6,80.1L859.3,77L860.8,73.1L870.3,68.5L872.6,64.3L876.3,60.4L883.3,50.7L883.8,49L885.7,44.4L886.1,42.6L883,39.9L881.6,36.1L872.2,29.3L871.4,23.4L870.5,23.7L869.1,27.8L867.9,29.1L863.5,29.2L861.4,27.7L849.3,26.7L846.3,29.3L843.5,33.4L840.9,36.3L838.1,37.8L835.8,40.5L826,56.2L822.3,57.5L804.9,66.9L796.2,70.6L789.5,77.2L787.2,81.1L785.1,85.5L783.9,92.1L777.8,100.2L775.6,101.9L773.4,102.6L770.7,102.4L768.1,102.9L763.9,102.1L758.7,104.7L752.9,106.9L747.9,101.4L744.2,100L738.5,101.5L735.7,104L730,116.1L728,123.1L728.1,125.9L731.3,134.5L735.1,139.3L743.4,144.7L761.1,148.5L765.2,147.2L769.7,147.2L774.4,150.7L777.3,156.6L777.7,160.7L777.7,162.1L778.7,163.3L779.3,165.3L777.5,166.9L776.1,167.8L774.9,174L774.9,180.9L776.3,183.1L780.2,186.4L786.1,189L791.5,189.6L801.9,188.3L806.1,184.2L805.9,182.4L806,180.1L815.2,174L820.4,168.6L819.5,167.2L818.5,166.2L819.5,165.6L822.3,165.3L835.1,159.7L845.1,164.2L850.8,169.5L856.4,170.5L860.4,173.1L864.9,175.5L870.8,175.6L875.7,176.1L877.3,173.9L878.9,172.5L880.5,172.8L882.6,175.6L888.3,177.8L893.5,177.7L897.1,176.8L899.2,177.9L896.1,181.5L896.6,187.2L894.2,189.1L891.9,192L893.2,193.9L894.4,194.7L894.3,197.1L892.2,198.4L888.4,201.9L886.1,201.8L885,201.1L884.3,199.8L883.8,197.9L882.4,196.6L878.6,196.1L874.6,196.5L865.8,201.7L857.3,205.8L848.2,209.1L845.2,211.1L843,211.7L839.4,210.1L837.1,210.2L836.6,211.2L839.5,214.1L840.3,216.4L839.9,218L838.3,218.8L835.9,217.5L833.7,219.3L832.8,222.4L832.8,229.5L831.3,231.1L827.4,232L823.1,234.3L821.6,233.2L821,232L821.4,228.6L821,227.1L819,227.1L816,228.1L813.8,230.3L813.1,231.6L816,235.8L818.8,236.2L819.5,237.1L817.2,239.2L811.8,242.2L810.8,244.8L809.3,247.3L807,249.2L805.4,251.2L803.6,252.3L800.6,253.5L796.8,258.3L794.1,263L790.8,265.3L788.3,273L783.7,277.1L782,283.8L783.2,287.9L788.2,287.9L790.7,289.3L796,294.7L802.3,298.2L808.7,300.1L816.6,305.2L818.9,307.2L820.7,311.5L824.2,323.7L826.6,329.7L826.9,332.9L830.6,338.9L834.6,349L839.1,357.9L840,364.7L838.4,367.9L838.6,372L843,375.8L853.3,380.1L854.9,381.4L856.9,383.5L856.9,390L858.5,392.2L859.9,393.4L866.1,396.2L868.6,398.5L871.4,402.2L872.1,405.5L872.5,409.9L869,410L866.2,409.6L855.2,403.8L852.3,403.6L848.3,404.4L842.5,403.3L836.4,397L832.1,395L827.4,394L816.1,399.6L813.2,399.2L812.4,399.8L811.1,400.7L816.4,401.9L821.6,400.1L826.6,397.4L833.9,398.9L835.1,401.3L836.3,405.3L841.3,408.1L845.3,409.3L850.3,412.9L855.2,418.5L865.6,425L869.8,431.1L871.4,435.1L872.8,440.8L869.2,442.6L866.1,442.9L861.1,443.7L857.5,445.7L853.8,449.2L843.4,454.8L841.3,458.2L840,461.2L837.5,462.7L831,461.2L824.9,461.4L818.2,465.4L816.5,467L817.6,466.8L818.7,466.2L821.7,466.8L826.5,464.7L831.1,471.3L840.3,470.2L848.8,464.7L852.1,464.6L854.9,465.5L857.9,467.6L866.2,477.2L870.7,478.3L875.1,480.5L877.5,480.7L879.7,481.4L873.8,484.9L866.1,492.5L862.7,494.3L860.4,496.3L866.6,495.3L871,491.7L873.2,490.8L875,491.6L875.8,496.1L874.2,509.8L872,510L869.9,506.2L867.5,505.1L865.3,505.8L861.4,505.8L859.8,507.5L858.5,509.9L860.9,510.4L865.7,514.5L866.2,516.7L864.9,518.1L861.5,517.5L865.6,520.6L864.5,523.8L863.2,525L860.8,525.8L859.3,528.6L861.5,533.2L863.7,539.1L863.9,541.9L860.5,540.7L855.3,544.3L852.6,544.6L850.6,539.9L848.3,540.6L846.8,542L844.6,547.1L842.1,551.6L839.8,552.9L837.1,552.5L835,552.7L835.6,553.9L837.8,555.4L837.8,557.1L832.9,562.7L832.1,564.8L832.2,566.7L829.6,568.9L831,572.6L830.2,575.3L828,578.8L825.7,581.2L822.8,585L819.3,587.1L814.6,595.1L813.2,599.1L812.9,603.2L811.3,604.5L808.9,606.3L806,605.4L805.9,602.7L804.7,602.4L804,600.7L803.7,598.4L804.1,596.6L802.9,597.1L802.1,599.2L800.2,601L798.3,600.3L796.1,598.9L796.2,600.9L797.3,603L797.8,605L800.7,605.4L802.7,607.8L804.3,611.4L804.6,612.8L805.8,614.4L805.9,615.8L803.1,617.1L799.6,619.4L795.4,623.5L791.9,626.2L788.8,626.2L786.9,625.9L784.2,624.3L781,623.7L785.3,629.2L787.5,630.1L790.4,630L793.2,627.9L797.2,628.1L798.2,631.2L797.1,634.8L794.9,639.5L794.5,643.5L797.2,649.1L797.3,650.9L796.2,651.7L793.1,650.2L790.6,648.4L787.9,648.8L785.3,648L782.5,648.7L781.3,650L782.1,652.2L784.5,654L786,656.8L784.3,657.7L777.3,657.1L775.6,657.6L773.6,660.6L774.9,665.2L773.3,668L770.4,668.7L766.6,670.9L764.3,671.4L764.4,672.4L766.1,673.4L767,674.8L764.9,679.4L761.7,680.8L756.7,680.1L752.8,681.2L749.4,679.2L745.8,679.1L743.4,681.6L743.2,684.5L740.7,684.7L739.4,684.5L737.6,684.7L737.9,686.3L738.8,687.6L743.8,688.2L744.6,690.2L744.8,693.2L739.7,698.3L737.5,701.7L734.2,701.6L731.8,704.4L730.5,708.2L728.8,707.4L725.1,708L723.9,709.8L724.8,710.5L724.9,711.8L723.4,716.1L721.7,717.2L721,715.5L720.5,712.8L719.2,712.6L717,715.1L714.3,716.9L712.2,717.6L710.5,715.9L706.4,715.1L704.8,722.2L701.3,724.8L699.7,725.6L697,725.8L698.8,726.8L699.4,728.6L698.3,730.4L695.5,730.8L693.9,732.2L693.3,738.5L691.7,740.7L687.4,740.8L684.3,739.4L683.3,740.6L682.8,741.7L681.2,742.8L678,743.1L670.9,745.9L667.8,745.1L663.9,744L661.1,745.1L660.3,747.3L659.1,748.9L655.2,748.9L652.1,746.9L649,745.4L645.5,746.6L642.8,749.3L639.5,750.2L638.9,751.8L637.5,752.6L634,752.3L632.7,748.2L630.7,747.6L628.8,749.7L628.1,751.3L627.1,752.5L627.5,755.8L625.6,755.9L623,753.9L620.2,753.5L617.8,755.4L618.7,756.9L618.4,758.4L619.8,759.2L620.1,760.6L618.7,761.4L618.6,763.2L617.8,764.3L613.5,762.4L610,761.4L606.7,761.8L605.7,760.6L605.4,759.5L609.2,757.5L609.4,756.5L606.6,755.8L603.1,753L600.7,748.4L597.6,745.9L596.1,743.7L595.6,739.8L595,738L595.3,735.9L596.1,734.1L592.7,735L590.3,736.7L590.8,738.9L590.2,740.9L586.5,741.9L586.7,742.8L587,743.7L589.9,746.4L590.5,748.7L591.7,749.9L594,753.4L593.8,760.4L595.2,762.3L594.7,764.2L593.7,766.9L592.1,767.7L589.4,768.5L587.7,769L586.4,769.7L584.3,771.7L580.3,772.2L578.4,767.5L575.6,770.7L574.9,777.2L573.8,778.3L572.1,779.3L569,777L566.2,778.5L564,780.1L563.1,781.5L561.5,783L558.5,781.5L556,779.3L556.6,777.6L556.3,776.5L555.1,775.6L553.9,775.8L554.5,778L555,782.2L553.8,783.3L552.1,784.3L548.4,783.5L545.8,782L542.7,780.7L540,780.4L539.4,783L537.6,785.2L536.1,785.5L534.4,785.1L532.2,787.4L531.2,789.1L528.6,790.9L521.6,791.7L519,793.5L515.8,793.2L513.3,793.7L511.7,793.5L510.5,792.6L508.9,792.6L508.3,795.5L504.3,796.8L500.7,797.1L496.7,801L493.8,803.3L491.8,803.5L490.2,802.7L489.4,799.2L488.7,798.9L488.2,802.1L487.4,804.8L486,806.3L481.4,809.6L480.1,813L480.9,816.1L487.1,816.8L487.9,818.5L487.3,819.9L485.8,821L485.4,822.8L492,828.2L492.3,830.4L491.2,831.5L490,834.1L486.5,836.3L479,837.4L472.9,836.3L470.9,833.8L471,832L472.6,832.5L474.3,832.3L473.8,830.7L473.1,829.8L470.2,828.4L467.9,824.5L468.4,821.3L467.1,818.9L465.7,816.7L464.3,815.5L463.6,813.9L465,809.1L464.2,806.3L466.8,802.8L467.5,798.9L472.2,797.5L472.6,793.7L469.1,793.6L466.8,790.9L466.2,792L464.4,792.1L461.3,786.9L460.3,786.2L458.9,786L459.6,791.7L456,793.7L452.9,794.7L448.7,795L446.3,795.7L444.1,795.2L444.6,793.5L445.8,791.4L444.7,789.7L442.3,788.5L438.7,788.5L436.2,788.2L433.8,788.3L432.8,787.5L430.5,784.9L428.5,783.3L427.6,781.7L428.5,779.7L427.7,778.6L423.9,778.5L424,781.2L424.4,784.4L425.4,786.9L424.7,788.2L422.8,789.2L420.7,786.5L419.8,785.9L418.7,786L418,788.6L416.2,790.9L412.8,790.7L410.1,792.1L407,792.7L405.4,793L401.4,793.1L398.1,796.4L395.7,797.8L392,798.9L388.1,800.8L387,804L386.8,806.4L386.2,809L379.9,812.8L378,812.5L376.8,811L375,811.3L373.7,812L372.3,812L370.6,812.8L368.4,812.5L366.3,811.3L365.1,811L363.7,811L363.4,812.4L365.5,817.9L366.1,820.5L359.3,827.9L360.1,832.8L358.3,836.4L354.2,839.4L346.4,847L342.9,847.2L340.3,849L334.6,861.4L334.5,865.8L333.7,868.8L333.9,871.9L331.4,877.8L328.7,880.3L328.2,883.5L331.8,890.1L332.3,891.3L334.4,894.9L335.5,897.4L337.2,899.9L343.1,906.5L345.7,908.5L348.9,909.9L354.6,915.8L357.5,919.6L357.3,920L-20,920L-20,-20L1020,-20ZM616.6,767.3L615.8,767.9L613.5,765.3L613.4,764.4L615.2,764.3L617.1,765.5L617.1,766.5ZM874.3,886L872.2,888.6L871,887.9L872.2,885.4L872.2,884.5L873.2,882.6L875,882L876.6,883.9ZM851.8,879.4L851.7,881.8L850,880.5L849.7,878.7L849.8,877.4L850.5,875.8L851.6,877.2ZM860.9,869.5L861.2,872.7L859.2,872.6L856.3,870.6L855.9,869.6L856.1,868.8L856.5,868.2ZM875.6,833.7L875,834.1L874,834L875,830.5L876.7,829.6L878,830ZM872.8,818.8L871.3,821.7L869.9,821.7L870.2,820.1L871.9,816.7L872.5,816.7ZM953.8,683.2L951.8,689L950.1,689.8L948.5,689.4L946.8,686.1L948,684.9L949.7,685.6L951,685.3L954,680.6L954.8,681.3ZM940.3,691.9L938.1,692.4L935.5,691.8L933.3,691.6L933.3,690.5L935.7,689.4L935.7,687.8L936.3,687L941.8,688.9L941.6,690.3ZM992.4,674.8L989.5,675.8L986.4,675.3L986.9,670.1L988,670.8L988.6,672.6L990.9,673.6ZM756.5,683L758,685.4L757.4,687L752.8,686.1L752.6,684.7L754.3,684.9ZM749.1,684L747.9,686.1L745.9,685.8L745.9,684.2L745.5,683.8L746.1,682.3L746.4,681.9L748.6,683.1ZM1020,350.3L1019,349.9L1018.7,349.4L1017,347.2L1016.5,346L1017.7,343.7L1020,341.9L1020,350.3ZM1020,302.5L1018.8,303.3L1018.8,303.3L1016.6,304L1015.4,302.5L1014.6,302.1L1015,300.3L1018.5,296.7L1019.3,295.5L1020,295.7L1020,302.5ZM872.3,418.2L869.6,419.3L860.9,416L854.7,412.2L851,407.8L850.5,405.9L854.7,406.2L859,407.9L859.9,410.3L861.6,411.1L862.7,412.5L870.5,415.9L871.7,416.9ZM886.8,477.8L886.3,478.6L882.2,476.4L877.8,475.9L876.2,474L876,470.9L880.7,471L886.5,473.8L887.8,475.2ZM882.7,488.8L882.6,489.5L879.7,487L878.4,486.6L879,485.2L880.9,484.8L882.5,488ZM890.4,480.5L890.2,482.4L889.2,482.1L888,478.9L888.7,478.1L890.4,478.3ZM804,648.4L801.4,650.2L799.9,649.3L799.9,647L800.7,644.9L799.7,643.5L800.6,641.6L802.5,641.1L803.1,642.2L804.2,642.9L804.6,643.5L804.6,644.6L803.5,646.5L804.3,647.6ZM487.8,807.7L489,808.9L492.4,808L493,809.6L492.9,810.3L491.8,812.1L489,810.8L486.2,811.1L484.3,811L483.7,810.1L485.3,808.3ZM394.6,803.2L389.7,807.7L387.9,807.7L389.5,802.5L390.3,801.4L393.2,803.1ZM391.8,813.6L390,814.6L387.7,814.4L390.3,812.7L391.8,810.5L392.9,809.8L392.8,811.6ZM375.4,820L374.1,820.2L371.4,817.3L372.7,815.8L375.9,816.9L376.5,817.6L376.5,818.2L375.8,819.5ZM369.8,817.6L369.5,818.3L367.8,816.6L366.6,815.9L367.5,813.6L369.5,816.1ZM974.3,86.6L972.3,87.8L972.3,85.6L973.8,83.7L975.2,83.5ZM851.8,549.8L848.9,550.6L847.9,550.6L847.9,547.9L850.3,545.3L851.2,546.1L851.8,547.5ZM594,745.8L594.3,747.5L591.7,744.9L590.9,744.8L589.6,743.9L588.9,742.3L590.9,742.2L592.9,744.1ZM568.4,789.4L567.7,790L566.7,788.8L566.5,786.9L565.7,785.9L567.4,784.6L568.1,783.2L569.9,783.5L570.8,783.9L569.1,785.3L568.7,786ZM563.4,788L560.2,788.7L559.5,788.6L560.7,786.7L563.6,785.4ZM608.8,767.3L604.8,767.3L604,767L603.5,766.2L604.9,764.8L610.4,762.9L609,765ZM1016.7,288.6L1016.2,289.6L1014.8,289.3L1013.3,286.5L1012.7,284.3L1011.2,283L1013.6,281.1L1016.6,284.6ZM968.8,153.4L969.2,153.8L969.2,154.5L968.7,154.8L968,155.5L967.3,156L965.9,155.8L964.9,154.9L965.2,153.4L966.1,153.7L968,153Z"/></defs></svg>
+<div class="orbs" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<nav class="nav" aria-label="Города">
+  <a href="#top" class="brand">中国</a>
+  <a href="#gz" data-nav="gz"><span class="zh">广州</span><span class="nl">Гуанчжоу</span></a><a href="#ys" data-nav="ys"><span class="zh">阳朔</span><span class="nl">Яншо</span></a><a href="#fh" data-nav="fh"><span class="zh">凤凰</span><span class="nl">Фэнхуан</span></a><a href="#zj" data-nav="zj"><span class="zh">张家界</span><span class="nl">Чжанцзяцзе</span></a>
+  <span class="prog" aria-hidden="true"><i></i></span>
+</nav>
+
+
+<header class="hero" id="top">
+  <div class="hero-text">
+    <p class="eyebrow">Дневник путешествия · Potopisni dnevnik</p>
+    <h1><span class="zh-big" aria-hidden="true">中国</span>Китай<em>Kitajska</em></h1>
+    <p class="dates">13 — 23 октября 2026</p>
+    <ol class="route-chips"><li><a href="#gz"><span class="zh">广州</span>Гуанчжоу</a></li><li><a href="#ys"><span class="zh">阳朔</span>Яншо</a></li><li><a href="#fh"><span class="zh">凤凰</span>Фэнхуан</a></li><li><a href="#zj"><span class="zh">张家界</span>Чжанцзяцзе</a></li></ol>
+    <dl class="stats">
+      <div><dt>города</dt><dd>4</dd></div>
+      <div><dt>места</dt><dd>19</dd></div>
+      <div><dt>фото</dt><dd>184</dd></div>
+      <div><dt>км по прямой</dt><dd>≈4,000</dd></div>
+    </dl>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-photos"><figure class="hp hp0"><img src="img/p171.jpg" width="1600" height="1067" alt="" decoding="async"></figure><figure class="hp hp1"><img src="img/p119.jpg" width="1600" height="1067" alt="" decoding="async"></figure><figure class="hp hp2"><img src="img/p030.jpg" width="1600" height="1200" alt="" decoding="async"></figure><figure class="hp hp3"><img src="img/p206.jpg" width="1067" height="1600" alt="" decoding="async"></figure></div>
+    <div class="glass-lg map-card">
+      <div class="card-h"><span>Маршрут · Pot</span><span class="mono">5 точки · 13 — 23 октября</span></div>
+      <svg class="cmap full " viewBox="300 20 600 850" role="img" aria-label="Карта маршрута"><rect x="300" y="20" width="600" height="850" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.80"/><use href="#land" class="land" style="stroke-width:1.20"/><text class="sea-l" x="835" y="269" text-anchor="middle" style="font-size:13.0px">Жёлтое море</text><text class="sea-l" x="835" y="507" text-anchor="middle" style="font-size:13.0px">Восточно-Китайское</text><text class="sea-l" x="835" y="523" text-anchor="middle" style="font-size:13.0px">море</text><text class="sea-l" x="642" y="864" text-anchor="middle" style="font-size:13.0px">Южно-Китайское</text><text class="sea-l" x="642" y="880" text-anchor="middle" style="font-size:13.0px">море</text><path class="leg done flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:1.80"/><path class="leg back flight" d="M490.9 510.4 Q660.25 309.05 689.6 87.7" pathLength="100" style="stroke-width:1.60"/><circle class="city seen" cx="689.6" cy="87.7" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="704.6" y="94.0" text-anchor="start" style="font-size:17.5px">Пекин</text><circle class="city seen" cx="584.1" cy="734" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="569.1" y="761.5" text-anchor="end" style="font-size:17.5px">Гуанчжоу</text><circle class="city seen" cx="491.4" cy="673.6" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="476.4" y="679.9" text-anchor="end" style="font-size:17.5px">Яншо</text><circle class="city seen" cx="461.5" cy="554.8" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="446.5" y="561.0" text-anchor="end" style="font-size:17.5px">Фэнхуан</text><circle class="city seen" cx="490.9" cy="510.4" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="505.9" y="500.4" text-anchor="start" style="font-size:17.5px">Чжанцзяцзе</text></svg>
+      <ul class="legend"><li><i class="lg-flight"></i>самолёт</li><li><i class="lg-train"></i>поезд</li></ul>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="interlude" id="prologue">
+  <div class="glass-lg inter-card">
+    <p class="eyebrow">Пролог · 13 октября</p>
+    <h2>Пересадка в Пекине <em>Prestop v Pekingu</em></h2>
+    <p class="ru">Путь начался с пересадки в пекинском аэропорту Дасин — терминале-«морской звезде», спроектированном бюро Захи Хадид. Оттуда — на юг, в Гуанчжоу.</p><p class="en" lang="sl">Pot se je začela s prestopom na pekinškem letališču Daxing – terminalu v obliki morske zvezde, ki ga je zasnoval biro Zahe Hadid. Od tam smo poleteli na jug, v Guangzhou.</p>
+    <blockquote class="note-me"><p class="nm-h">Мои впечатления · Moji vtisi</p><p class="nm-ru">Очень чисто, ничего непонятно, но видно, что страна идёт к светлому будущему. Только камеры на каждом шагу смущают.</p><p class="nm-sl" lang="sl">Zelo čisto, nič ne razumeš, a vidi se, da država gre proti svetli prihodnosti. Motijo le kamere na vsakem koraku.</p></blockquote>
+  </div>
+  <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Пекин Дасин: фотографии"><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p097.jpg" aria-label="Открыть фото 1 из 3"><img src="img/p097.jpg" width="1600" height="1200" alt="Пекин Дасин, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p098.jpg" aria-label="Открыть фото 2 из 3"><img src="img/p098.jpg" width="1200" height="1600" alt="Пекин Дасин, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p099.jpg" aria-label="Открыть фото 3 из 3"><img src="img/p099.jpg" width="1200" height="1600" alt="Пекин Дасин, фото 3" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 3</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+</section>
+
+<section class="chapter" id="gz" data-chapter="gz" style="--o1:#E2674A;--o2:#E9B44C;--o3:#F2A88B">
+  <div class="leg-block">
+    <div class="glass-lg leg-card">
+      <div class="leg-text">
+        <p class="eyebrow">Глава 1 · Poglavje 1</p>
+        <p class="leg-route"><span>Пекин</span><svg viewBox="0 0 40 12" aria-hidden="true"><path d="M0 6h36M31 1l6 5-6 5"/></svg><span>Гуанчжоу</span></p>
+        <p class="leg-en" lang="sl">Peking → Guangzhou</p>
+        <ul class="leg-meta">
+          <li><span>в пути</span><b>самолёт</b></li>
+          <li><span>по прямой</span><b>≈ 1850 км</b></li>
+          <li><span>дата</span><b>13–14 октября</b></li>
+        </ul>
+      </div>
+      <svg class="cmap full " viewBox="300 20 600 850" role="img" aria-label="Карта маршрута"><rect x="300" y="20" width="600" height="850" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.80"/><use href="#land" class="land" style="stroke-width:1.20"/><text class="sea-l" x="835" y="269" text-anchor="middle" style="font-size:13.0px">Жёлтое море</text><text class="sea-l" x="835" y="507" text-anchor="middle" style="font-size:13.0px">Восточно-Китайское</text><text class="sea-l" x="835" y="523" text-anchor="middle" style="font-size:13.0px">море</text><text class="sea-l" x="642" y="864" text-anchor="middle" style="font-size:13.0px">Южно-Китайское</text><text class="sea-l" x="642" y="880" text-anchor="middle" style="font-size:13.0px">море</text><path class="leg now flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:2.60"/><path class="leg todo" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:1.80"/><path class="leg todo" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:1.80"/><path class="leg todo" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:1.80"/><circle class="city seen" cx="689.6" cy="87.7" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="704.6" y="94.0" text-anchor="start" style="font-size:17.5px">Пекин</text><circle class="pulse" cx="584.1" cy="734" r="21.00"/><circle class="city now" cx="584.1" cy="734" r="8.75" style="stroke-width:2.50"/><text class="city-l now" x="569.1" y="761.5" text-anchor="end" style="font-size:21.2px">Гуанчжоу</text><circle class="city next" cx="491.4" cy="673.6" r="6.25" style="stroke-width:2.50"/><text class="city-l next" x="476.4" y="679.9" text-anchor="end" style="font-size:17.5px">Яншо</text><circle class="city next" cx="461.5" cy="554.8" r="6.25" style="stroke-width:2.50"/><text class="city-l next" x="446.5" y="561.0" text-anchor="end" style="font-size:17.5px">Фэнхуан</text><circle class="city next" cx="490.9" cy="510.4" r="6.25" style="stroke-width:2.50"/><text class="city-l next" x="505.9" y="500.4" text-anchor="start" style="font-size:17.5px">Чжанцзяцзе</text></svg>
+    </div>
+  </div>
+  <header class="ch-head">
+    <div class="ch-cover"><img src="img/p107.jpg" width="1600" height="1067" alt="Гуанчжоу" loading="lazy" decoding="async"></div>
+    <div class="ch-card glass-lg">
+      <span class="ch-zh" aria-hidden="true">广州</span>
+      <p class="eyebrow">14 октября · Guǎngzhōu</p>
+      <h2>Гуанчжоу <em lang="sl">Guangzhou</em></h2>
+      <p class="ru">Южные ворота Китая и столица провинции Гуандун. Город торгует больше двух тысяч лет: отсюда уходил морской Шёлковый путь, а сегодня вдоль Жемчужной реки стоят небоскрёбы.</p>
+      <p class="en" lang="sl">Južna vrata Kitajske in glavno mesto province Guangdong. Mesto trguje že več kot dva tisoč let: od tod je izhajala pomorska svilna pot, danes pa ob Biserni reki stojijo nebotičniki.</p>
+    </div>
+  </header>
+  <div class="places glass-lg">
+    <div class="places-map"><svg class="lmap" viewBox="0 0 640 420" role="img" aria-label="Схема мест: Гуанчжоу"><line class="lgrid" x1="40" y1="12" x2="40" y2="408"/><line class="lgrid" x1="100" y1="12" x2="100" y2="408"/><line class="lgrid" x1="160" y1="12" x2="160" y2="408"/><line class="lgrid" x1="220" y1="12" x2="220" y2="408"/><line class="lgrid" x1="280" y1="12" x2="280" y2="408"/><line class="lgrid" x1="340" y1="12" x2="340" y2="408"/><line class="lgrid" x1="400" y1="12" x2="400" y2="408"/><line class="lgrid" x1="460" y1="12" x2="460" y2="408"/><line class="lgrid" x1="520" y1="12" x2="520" y2="408"/><line class="lgrid" x1="580" y1="12" x2="580" y2="408"/><line class="lgrid" x1="12" y1="30" x2="628" y2="30"/><line class="lgrid" x1="12" y1="90" x2="628" y2="90"/><line class="lgrid" x1="12" y1="150" x2="628" y2="150"/><line class="lgrid" x1="12" y1="210" x2="628" y2="210"/><line class="lgrid" x1="12" y1="270" x2="628" y2="270"/><line class="lgrid" x1="12" y1="330" x2="628" y2="330"/><line class="lgrid" x1="12" y1="390" x2="628" y2="390"/><path class="lroute" d="M70.0 265.3 Q118.2 244.6 135.5 195.1 Q183.0 172.9 231.5 192.9 Q221.0 136.7 172.5 106.5 Q410.3 107.8 570.0 283.9"/><a href="#gz-1" class="lpin" data-i="0"><circle cx="70.0" cy="265.3" r="16"/><text class="lnum" x="70.0" y="270.3" text-anchor="middle">1</text><text class="llbl" x="92.0" y="270.3" text-anchor="start">Храм Чэнь</text></a><a href="#gz-2" class="lpin" data-i="1"><circle cx="135.5" cy="195.1" r="16"/><text class="lnum" x="135.5" y="200.1" text-anchor="middle">2</text><text class="llbl" x="135.5" y="165.1" text-anchor="middle">Шесть баньянов</text></a><a href="#gz-3" class="lpin" data-i="2"><circle cx="231.5" cy="192.9" r="16"/><text class="lnum" x="231.5" y="197.9" text-anchor="middle">3</text><text class="llbl" x="253.5" y="197.9" text-anchor="start">Зал Сунь Ятсена</text></a><a href="#gz-4" class="lpin" data-i="3"><circle cx="172.5" cy="106.5" r="16"/><text class="lnum" x="172.5" y="111.5" text-anchor="middle">4</text><text class="llbl" x="194.5" y="111.5" text-anchor="start">Парк Юэсю</text></a><a href="#gz-5" class="lpin" data-i="4"><circle cx="570.0" cy="283.9" r="16"/><text class="lnum" x="570.0" y="288.9" text-anchor="middle">5</text><text class="llbl" x="548.0" y="288.9" text-anchor="end">Телебашня</text></a><g class="compass" transform="translate(606,34)"><circle r="17"/><path d="M0 -13 L5 0 L0 13 L-5 0Z"/><path class="n" d="M0 -13 L5 0 L-5 0Z"/></g></svg><p class="note">Схема: расположение условное, порядок — как мы шли</p></div>
+    <ol class="places-list"><li><a href="#gz-1" data-i="0"><span class="pn">1</span><span class="pt"><b>Храм предков семьи Чэнь</b><small lang="sl">Rodovni tempelj družine Chen</small></span></a></li><li><a href="#gz-2" data-i="1"><span class="pn">2</span><span class="pt"><b>Храм Шести баньянов</b><small lang="sl">Tempelj šestih banjanov</small></span></a></li><li><a href="#gz-3" data-i="2"><span class="pn">3</span><span class="pt"><b>Мемориальный зал Сунь Ятсена</b><small lang="sl">Spominska dvorana Sun Jat-sena</small></span></a></li><li><a href="#gz-4" data-i="3"><span class="pn">4</span><span class="pt"><b>Парк Юэсю и башня Чжэньхай</b><small lang="sl">Park Yuexiu in stolp Zhenhai</small></span></a></li><li><a href="#gz-5" data-i="4"><span class="pn">5</span><span class="pt"><b>Площадь Хуачэн и телебашня «Кантон»</b><small lang="sl">Trg Huacheng in stolp Kanton</small></span></a></li></ol>
+  </div>
+  
+    <article class="sight" id="gz-1" data-sight="0">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">01</span><span class="s-date">14 октября, утро</span></div>
+        <h3>Храм предков семьи Чэнь</h3>
+        <p class="s-en" lang="sl">Rodovni tempelj družine Chen <span class="zh">陈家祠</span></p>
+        <div class="bi">
+          <p lang="ru">Родовой храм и академия, построенные в 1888–1894 годах на деньги семей Чэнь со всей провинции Гуандун. Он знаменит керамическими фигурками на коньках крыш и резьбой по дереву, камню и кирпичу; сегодня здесь Музей народного искусства Гуандуна.</p>
+          <p lang="sl" class="en">Rodovni tempelj in akademija, zgrajena v letih 1888–1894 z denarjem družin Chen iz vse province Guangdong. Slovi po keramičnih figurah na slemenih streh ter rezbarijah v lesu, kamnu in opeki; danes je v njem Muzej ljudske umetnosti Guangdonga.</p>
+        </div>
+        <blockquote class="note-me"><p class="nm-h">Мои впечатления · Moji vtisi</p><p class="nm-ru">Флешбэк в моё путешествие в Южную Корею. Удивительно, как в одной точке совмещаются прошлое, настоящее и будущее.</p><p class="nm-sl" lang="sl">Preblisk na moje potovanje po Južni Koreji. Neverjetno, kako se na eni točki združujejo preteklost, sedanjost in prihodnost.</p></blockquote>
+        <p class="s-count">5 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Храм предков семьи Чэнь: фотографии"><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p109.jpg" aria-label="Открыть фото 1 из 5"><img src="img/p109.jpg" width="1067" height="1600" alt="Храм предков семьи Чэнь, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p110.jpg" aria-label="Открыть фото 2 из 5"><img src="img/p110.jpg" width="1600" height="1067" alt="Храм предков семьи Чэнь, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p111.jpg" aria-label="Открыть фото 3 из 5"><img src="img/p111.jpg" width="1600" height="1067" alt="Храм предков семьи Чэнь, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p108.jpg" aria-label="Открыть фото 4 из 5"><img src="img/p108.jpg" width="1600" height="1067" alt="Храм предков семьи Чэнь, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p112.jpg" aria-label="Открыть фото 5 из 5"><img src="img/p112.jpg" width="1600" height="1067" alt="Храм предков семьи Чэнь, фото 5" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 5</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="gz-2" data-sight="1">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">02</span><span class="s-date">14 октября, полдень</span></div>
+        <h3>Храм Шести баньянов</h3>
+        <p class="s-en" lang="sl">Tempelj šestih banjanov <span class="zh">六榕寺</span></p>
+        <div class="bi">
+          <p lang="ru">Буддийский храм, основанный в 537 году. Название ему дал поэт Су Дунпо: увидев во дворе шесть баньянов, он написал два иероглифа «六榕». Над храмом поднимается девятиярусная Цветочная пагода.</p>
+          <p lang="sl" class="en">Budistični tempelj, ustanovljen leta 537. Ime mu je dal pesnik Su Dongpo: ko je na dvorišču zagledal šest banjanov, je napisal pismenki 六榕. Nad templjem se dviga devetnadstropna Cvetlična pagoda.</p>
+        </div>
+        
+        <p class="s-count">7 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Храм Шести баньянов: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p113.jpg" aria-label="Открыть фото 1 из 7"><img src="img/p113.jpg" width="1600" height="1067" alt="Храм Шести баньянов, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p101.jpg" aria-label="Открыть фото 2 из 7"><img src="img/p101.jpg" width="1200" height="1600" alt="Храм Шести баньянов, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p114.jpg" aria-label="Открыть фото 3 из 7"><img src="img/p114.jpg" width="1600" height="1067" alt="Храм Шести баньянов, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p115.jpg" aria-label="Открыть фото 4 из 7"><img src="img/p115.jpg" width="1600" height="1067" alt="Храм Шести баньянов, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p102.jpg" aria-label="Открыть фото 5 из 7"><img src="img/p102.jpg" width="1200" height="1600" alt="Храм Шести баньянов, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p116.jpg" aria-label="Открыть фото 6 из 7"><img src="img/p116.jpg" width="1067" height="1600" alt="Храм Шести баньянов, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p117.jpg" aria-label="Открыть фото 7 из 7"><img src="img/p117.jpg" width="1600" height="1067" alt="Храм Шести баньянов, фото 7" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 7</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="gz-3" data-sight="2">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">03</span><span class="s-date">14 октября, день</span></div>
+        <h3>Мемориальный зал Сунь Ятсена</h3>
+        <p class="s-en" lang="sl">Spominska dvorana Sun Jat-sena <span class="zh">中山纪念堂</span></p>
+        <div class="bi">
+          <p lang="ru">Восьмиугольный зал под синей глазурованной черепицей, построенный в 1929–1931 годах в честь основателя Китайской Республики. Огромный купол держится без единой внутренней колонны, а у входа стоит статуя Сунь Ятсена.</p>
+          <p lang="sl" class="en">Osmerokotna dvorana pod modro glazirano opeko, zgrajena v letih 1929–1931 v čast ustanovitelju Republike Kitajske. Mogočna kupola stoji brez enega samega notranjega stebra, pred vhodom pa stoji kip Sun Jat-sena.</p>
+        </div>
+        
+        <p class="s-count">3 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Мемориальный зал Сунь Ятсена: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p119.jpg" aria-label="Открыть фото 1 из 3"><img src="img/p119.jpg" width="1600" height="1067" alt="Мемориальный зал Сунь Ятсена, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p121.jpg" aria-label="Открыть фото 2 из 3"><img src="img/p121.jpg" width="1067" height="1600" alt="Мемориальный зал Сунь Ятсена, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p118.jpg" aria-label="Открыть фото 3 из 3"><img src="img/p118.jpg" width="1600" height="1067" alt="Мемориальный зал Сунь Ятсена, фото 3" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 3</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="gz-4" data-sight="3">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">04</span><span class="s-date">14 октября, вечер</span></div>
+        <h3>Парк Юэсю и башня Чжэньхай</h3>
+        <p class="s-en" lang="sl">Park Yuexiu in stolp Zhenhai <span class="zh">越秀公园 · 镇海楼</span></p>
+        <div class="bi">
+          <p lang="ru">Самый большой парк в центре Гуанчжоу, на зелёных холмах. Пятиэтажная башня Чжэньхай 1380 года стоит на остатках минской городской стены, внутри — Музей Гуанчжоу, а с холма видно весь деловой центр.</p>
+          <p lang="sl" class="en">Največji park v središču Guangzhouja, razprostrt po zelenih gričih. Petnadstropni stolp Zhenhai iz leta 1380 stoji na ostankih mestnega obzidja iz dinastije Ming in hrani Muzej Guangzhouja; s hriba se vidi celotno poslovno središče.</p>
+        </div>
+        
+        <p class="s-count">6 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Парк Юэсю и башня Чжэньхай: фотографии"><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p103.jpg" aria-label="Открыть фото 1 из 6"><img src="img/p103.jpg" width="1600" height="1200" alt="Парк Юэсю и башня Чжэньхай, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p124.jpg" aria-label="Открыть фото 2 из 6"><img src="img/p124.jpg" width="1600" height="1067" alt="Парк Юэсю и башня Чжэньхай, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p122.jpg" aria-label="Открыть фото 3 из 6"><img src="img/p122.jpg" width="1067" height="1600" alt="Парк Юэсю и башня Чжэньхай, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p123.jpg" aria-label="Открыть фото 4 из 6"><img src="img/p123.jpg" width="1600" height="1067" alt="Парк Юэсю и башня Чжэньхай, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p125.jpg" aria-label="Открыть фото 5 из 6"><img src="img/p125.jpg" width="1600" height="1067" alt="Парк Юэсю и башня Чжэньхай, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p126.jpg" aria-label="Открыть фото 6 из 6"><img src="img/p126.jpg" width="1600" height="1067" alt="Парк Юэсю и башня Чжэньхай, фото 6" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 6</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="gz-5" data-sight="4">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">05</span><span class="s-date">14 октября, ночь</span></div>
+        <h3>Площадь Хуачэн и телебашня «Кантон»</h3>
+        <p class="s-en" lang="sl">Trg Huacheng in stolp Kanton <span class="zh">花城广场 · 广州塔</span></p>
+        <div class="bi">
+          <p lang="ru">Новый деловой район Чжуцзян со стеклянными небоскрёбами вокруг главной площади города. За рекой светится 600-метровая телебашня «Кантон», рядом — остров Хайсиньша и пешеходный мост Хайсинь через Жемчужную реку.</p>
+          <p lang="sl" class="en">Zhujiang New Town, četrt steklenih nebotičnikov okoli glavnega mestnega trga. Na drugi strani reke žari 600 metrov visoki stolp Kanton, poleg njega pa sta otok Haixinsha in brv Haixin čez Biserno reko.</p>
+        </div>
+        
+        <p class="s-count">10 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Площадь Хуачэн и телебашня «Кантон»: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p129.jpg" aria-label="Открыть фото 1 из 10"><img src="img/p129.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p128.jpg" aria-label="Открыть фото 2 из 10"><img src="img/p128.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p127.jpg" aria-label="Открыть фото 3 из 10"><img src="img/p127.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p104.jpg" aria-label="Открыть фото 4 из 10"><img src="img/p104.jpg" width="1200" height="1600" alt="Площадь Хуачэн и телебашня «Кантон», фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p130.jpg" aria-label="Открыть фото 5 из 10"><img src="img/p130.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p131.jpg" aria-label="Открыть фото 6 из 10"><img src="img/p131.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p132.jpg" aria-label="Открыть фото 7 из 10"><img src="img/p132.jpg" width="1600" height="1067" alt="Площадь Хуачэн и телебашня «Кантон», фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p105.jpg" aria-label="Открыть фото 8 из 10"><img src="img/p105.jpg" width="1600" height="1200" alt="Площадь Хуачэн и телебашня «Кантон», фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p133.jpg" aria-label="Открыть фото 9 из 10"><img src="img/p133.jpg" width="1067" height="1600" alt="Площадь Хуачэн и телебашня «Кантон», фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p106.jpg" aria-label="Открыть фото 10 из 10"><img src="img/p106.jpg" width="1200" height="1600" alt="Площадь Хуачэн и телебашня «Кантон», фото 10" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 10</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+</section>
+<section class="chapter" id="ys" data-chapter="ys" style="--o1:#2F8C78;--o2:#8FBF6A;--o3:#5FA9B5">
+  <div class="leg-block">
+    <div class="glass-lg leg-card">
+      <div class="leg-text">
+        <p class="eyebrow">Глава 2 · Poglavje 2</p>
+        <p class="leg-route"><span>Гуанчжоу</span><svg viewBox="0 0 40 12" aria-hidden="true"><path d="M0 6h36M31 1l6 5-6 5"/></svg><span>Яншо</span></p>
+        <p class="leg-en" lang="sl">Guangzhou → Yangshuo</p>
+        <ul class="leg-meta">
+          <li><span>в пути</span><b>поезд</b></li>
+          <li><span>по прямой</span><b>≈ 340 км</b></li>
+          <li><span>дата</span><b>15 октября</b></li>
+        </ul>
+      </div>
+      <svg class="cmap south " viewBox="390 470 250 300" role="img" aria-label="Карта маршрута"><rect x="390" y="470" width="250" height="300" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.33"/><use href="#land" class="land" style="stroke-width:0.50"/><text class="prov-l" x="602" y="695" text-anchor="middle">ГУАНДУН</text><text class="prov-l" x="441" y="717" text-anchor="middle">ГУАНСИ</text><text class="prov-l" x="539" y="580" text-anchor="middle">ХУНАНЬ</text><text class="prov-l" x="421" y="492" text-anchor="middle">ЧУНЦИН</text><path class="leg done flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:0.75"/><path class="leg now" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:1.08"/><path class="leg todo" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:0.75"/><path class="leg todo" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:0.75"/><circle class="city seen" cx="689.6" cy="87.7" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="697.0" y="90.8" text-anchor="start" style="font-size:8.7px">Пекин</text><circle class="city seen" cx="584.1" cy="734" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="576.7" y="747.6" text-anchor="end" style="font-size:8.7px">Гуанчжоу</text><circle class="pulse" cx="491.4" cy="673.6" r="10.42"/><circle class="city now" cx="491.4" cy="673.6" r="4.34" style="stroke-width:1.24"/><text class="city-l now" x="484.0" y="676.7" text-anchor="end" style="font-size:10.5px">Яншо</text><circle class="city next" cx="461.5" cy="554.8" r="3.10" style="stroke-width:1.24"/><text class="city-l next" x="454.1" y="557.9" text-anchor="end" style="font-size:8.7px">Фэнхуан</text><circle class="city next" cx="490.9" cy="510.4" r="3.10" style="stroke-width:1.24"/><text class="city-l next" x="498.3" y="505.4" text-anchor="start" style="font-size:8.7px">Чжанцзяцзе</text></svg>
+    </div>
+  </div>
+  <header class="ch-head">
+    <div class="ch-cover"><img src="img/p139.jpg" width="1600" height="1067" alt="Яншо" loading="lazy" decoding="async"></div>
+    <div class="ch-card glass-lg">
+      <span class="ch-zh" aria-hidden="true">阳朔</span>
+      <p class="eyebrow">15 — 16 октября · Yángshuò</p>
+      <h2>Яншо <em lang="sl">Yangshuo</em></h2>
+      <p class="ru">Маленький город среди карстовых гор Гуанси. Рисовые поля, бамбуковые плоты, реки Ли и Юйлун; пейзаж с купюры в 20 юаней — это тоже здешняя река Ли.</p>
+      <p class="en" lang="sl">Majhno mesto med kraškimi vrhovi Guangxija. Riževa polja, bambusovi splavi, reki Li in Yulong; pokrajina z bankovca za 20 juanov je prav tukajšnja reka Li.</p>
+    </div>
+  </header>
+  <div class="places glass-lg">
+    <div class="places-map"><svg class="lmap" viewBox="0 0 640 420" role="img" aria-label="Схема мест: Яншо"><line class="lgrid" x1="40" y1="12" x2="40" y2="408"/><line class="lgrid" x1="100" y1="12" x2="100" y2="408"/><line class="lgrid" x1="160" y1="12" x2="160" y2="408"/><line class="lgrid" x1="220" y1="12" x2="220" y2="408"/><line class="lgrid" x1="280" y1="12" x2="280" y2="408"/><line class="lgrid" x1="340" y1="12" x2="340" y2="408"/><line class="lgrid" x1="400" y1="12" x2="400" y2="408"/><line class="lgrid" x1="460" y1="12" x2="460" y2="408"/><line class="lgrid" x1="520" y1="12" x2="520" y2="408"/><line class="lgrid" x1="580" y1="12" x2="580" y2="408"/><line class="lgrid" x1="12" y1="30" x2="628" y2="30"/><line class="lgrid" x1="12" y1="90" x2="628" y2="90"/><line class="lgrid" x1="12" y1="150" x2="628" y2="150"/><line class="lgrid" x1="12" y1="210" x2="628" y2="210"/><line class="lgrid" x1="12" y1="270" x2="628" y2="270"/><line class="lgrid" x1="12" y1="330" x2="628" y2="330"/><line class="lgrid" x1="12" y1="390" x2="628" y2="390"/><path class="lroute" d="M330.6 96.7 Q335.3 152.5 379.6 186.9 Q371.5 114.7 419.3 60.0 Q273.7 169.0 255.7 350.0 Q249.9 282.8 295.5 233.1"/><a href="#ys-1" class="lpin" data-i="0"><circle cx="330.6" cy="96.7" r="16"/><text class="lnum" x="330.6" y="101.7" text-anchor="middle">1</text><text class="llbl" x="352.6" y="101.7" text-anchor="start">Западная улица</text></a><a href="#ys-2" class="lpin" data-i="1"><circle cx="379.6" cy="186.9" r="16"/><text class="lnum" x="379.6" y="191.9" text-anchor="middle">2</text><text class="llbl" x="401.6" y="191.9" text-anchor="start">Река Юйлун</text></a><a href="#ys-3" class="lpin" data-i="2"><circle cx="419.3" cy="60.0" r="16"/><text class="lnum" x="419.3" y="65.0" text-anchor="middle">3</text><text class="llbl" x="441.3" y="65.0" text-anchor="start">Шоу Лю Саньцзе</text></a><a href="#ys-4" class="lpin" data-i="3"><circle cx="255.7" cy="350.0" r="16"/><text class="lnum" x="255.7" y="355.0" text-anchor="middle">4</text><text class="llbl" x="277.7" y="355.0" text-anchor="start">Пик Жуи</text></a><a href="#ys-5" class="lpin" data-i="4"><circle cx="295.5" cy="233.1" r="16"/><text class="lnum" x="295.5" y="238.1" text-anchor="middle">5</text><text class="llbl" x="317.5" y="238.1" text-anchor="start">Большой баньян</text></a><g class="compass" transform="translate(606,34)"><circle r="17"/><path d="M0 -13 L5 0 L0 13 L-5 0Z"/><path class="n" d="M0 -13 L5 0 L-5 0Z"/></g></svg><p class="note">Схема: расположение условное, порядок — как мы шли</p></div>
+    <ol class="places-list"><li><a href="#ys-1" data-i="0"><span class="pn">1</span><span class="pt"><b>Яншо и Западная улица</b><small lang="sl">Yangshuo in Zahodna ulica</small></span></a></li><li><a href="#ys-2" data-i="1"><span class="pn">2</span><span class="pt"><b>Сплав по реке Юйлун</b><small lang="sl">Spust z bambusovim splavom po reki Yulong</small></span></a></li><li><a href="#ys-3" data-i="2"><span class="pn">3</span><span class="pt"><b>Шоу «Впечатление: Лю Саньцзе»</b><small lang="sl">Predstava »Vtis: Liu Sanjie«</small></span></a></li><li><a href="#ys-4" data-i="3"><span class="pn">4</span><span class="pt"><b>Парк Пик Жуи</b><small lang="sl">Park Ruyi</small></span></a></li><li><a href="#ys-5" data-i="4"><span class="pn">5</span><span class="pt"><b>Большой баньян и деревни</b><small lang="sl">Veliki banjan in podeželje</small></span></a></li></ol>
+  </div>
+  
+    <article class="sight" id="ys-1" data-sight="0">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">01</span><span class="s-date">15 октября</span></div>
+        <h3>Яншо и Западная улица</h3>
+        <p class="s-en" lang="sl">Yangshuo in Zahodna ulica <span class="zh">阳朔西街</span></p>
+        <div class="bi">
+          <p lang="ru">Город стоит прямо среди карстовых пиков: в конце каждой улицы видна гора. Западная улица — пешеходное сердце Яншо с кафе, лавками и вечерней толпой.</p>
+          <p lang="sl" class="en">Mesto stoji sredi kraških vrhov: na koncu vsake ulice se dviga gora. Zahodna ulica je peš srce Yangshuoja s kavarnami, trgovinami in večerno gnečo.</p>
+        </div>
+        
+        <p class="s-count">4 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Яншо и Западная улица: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p135.jpg" aria-label="Открыть фото 1 из 4"><img src="img/p135.jpg" width="1600" height="1067" alt="Яншо и Западная улица, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p134.jpg" aria-label="Открыть фото 2 из 4"><img src="img/p134.jpg" width="1600" height="1067" alt="Яншо и Западная улица, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p136.jpg" aria-label="Открыть фото 3 из 4"><img src="img/p136.jpg" width="1600" height="1067" alt="Яншо и Западная улица, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p050.jpg" aria-label="Открыть фото 4 из 4"><img src="img/p050.jpg" width="1200" height="1600" alt="Яншо и Западная улица, фото 4" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 4</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="ys-2" data-sight="1">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">02</span><span class="s-date">15 октября, вечер</span></div>
+        <h3>Сплав по реке Юйлун</h3>
+        <p class="s-en" lang="sl">Spust z bambusovim splavom po reki Yulong <span class="zh">遇龙河竹筏</span></p>
+        <div class="bi">
+          <p lang="ru">Юйлун — тихий приток реки Ли. Плотогон ведёт бамбуковый плот шестом мимо карстовых гор, полей и деревень, а на невысоких плотинах плот мягко «спрыгивает» вниз.</p>
+          <p lang="sl" class="en">Yulong je miren pritok reke Li. Splavar s palico vodi bambusov splav mimo kraških vrhov, polj in vasi, na nizkih jezovih pa splav nežno »skoči« navzdol.</p>
+        </div>
+        
+        <p class="s-count">7 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Сплав по реке Юйлун: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p140.jpg" aria-label="Открыть фото 1 из 7"><img src="img/p140.jpg" width="1600" height="1067" alt="Сплав по реке Юйлун, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.7149"><button class="zoom" type="button" data-full="img/p011.jpg" aria-label="Открыть фото 2 из 7"><img src="img/p011.jpg" width="1600" height="933" alt="Сплав по реке Юйлун, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p137.jpg" aria-label="Открыть фото 3 из 7"><img src="img/p137.jpg" width="1067" height="1600" alt="Сплав по реке Юйлун, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p141.jpg" aria-label="Открыть фото 4 из 7"><img src="img/p141.jpg" width="1600" height="1067" alt="Сплав по реке Юйлун, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p012.jpg" aria-label="Открыть фото 5 из 7"><img src="img/p012.jpg" width="1200" height="1600" alt="Сплав по реке Юйлун, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p013.jpg" aria-label="Открыть фото 6 из 7"><img src="img/p013.jpg" width="1200" height="1600" alt="Сплав по реке Юйлун, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p000.jpg" aria-label="Открыть фото 7 из 7"><img src="img/p000.jpg" width="1200" height="1600" alt="Сплав по реке Юйлун, фото 7" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 7</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="ys-3" data-sight="2">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">03</span><span class="s-date">15 октября, ночь</span></div>
+        <h3>Шоу «Впечатление: Лю Саньцзе»</h3>
+        <p class="s-en" lang="sl">Predstava »Vtis: Liu Sanjie« <span class="zh">印象·刘三姐</span></p>
+        <div class="bi">
+          <p lang="ru">Вечернее шоу под открытым небом, поставленное Чжан Имоу. Сцена — гладь реки Ли, декорации — подсвеченные карстовые горы, а в постановке участвуют сотни местных жителей.</p>
+          <p lang="sl" class="en">Večerna predstava na prostem v režiji Zhanga Yimouja. Oder je gladina reke Li, kulisa so osvetljeni kraški vrhovi, v predstavi pa nastopa na stotine domačinov.</p>
+        </div>
+        
+        <p class="s-count">2 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Шоу «Впечатление: Лю Саньцзе»: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p143.jpg" aria-label="Открыть фото 1 из 2"><img src="img/p143.jpg" width="1600" height="1067" alt="Шоу «Впечатление: Лю Саньцзе», фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p142.jpg" aria-label="Открыть фото 2 из 2"><img src="img/p142.jpg" width="1600" height="1067" alt="Шоу «Впечатление: Лю Саньцзе», фото 2" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 2</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="ys-4" data-sight="3">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">04</span><span class="s-date">16 октября, утро</span></div>
+        <h3>Парк Пик Жуи</h3>
+        <p class="s-en" lang="sl">Park Ruyi <span class="zh">如意峰</span></p>
+        <div class="bi">
+          <p lang="ru">Горный парк над долиной Яншо. Наверх везёт канатная дорога, а дальше — подвесной мост в красных лентах желаний, стеклянная тропа вдоль отвесной скалы и извилистая дорожка над лесом. С вершины видны сотни карстовых пиков.</p>
+          <p lang="sl" class="en">Gorski park nad dolino Yangshuo. Gor pelje gondola, naprej pa viseči most z rdečimi trakovi želja, steklena pot ob navpični steni in vijugasta pot nad gozdom. Z vrha se vidi na stotine kraških vrhov.</p>
+        </div>
+        
+        <p class="s-count">24 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Парк Пик Жуи: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p146.jpg" aria-label="Открыть фото 1 из 24"><img src="img/p146.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p148.jpg" aria-label="Открыть фото 2 из 24"><img src="img/p148.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p147.jpg" aria-label="Открыть фото 3 из 24"><img src="img/p147.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p014.jpg" aria-label="Открыть фото 4 из 24"><img src="img/p014.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p151.jpg" aria-label="Открыть фото 5 из 24"><img src="img/p151.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p152.jpg" aria-label="Открыть фото 6 из 24"><img src="img/p152.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p153.jpg" aria-label="Открыть фото 7 из 24"><img src="img/p153.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p020.jpg" aria-label="Открыть фото 8 из 24"><img src="img/p020.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p154.jpg" aria-label="Открыть фото 9 из 24"><img src="img/p154.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p155.jpg" aria-label="Открыть фото 10 из 24"><img src="img/p155.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p025.jpg" aria-label="Открыть фото 11 из 24"><img src="img/p025.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p030.jpg" aria-label="Открыть фото 12 из 24"><img src="img/p030.jpg" width="1600" height="1200" alt="Парк Пик Жуи, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.9417"><button class="zoom" type="button" data-full="img/p031.jpg" aria-label="Открыть фото 13 из 24"><img src="img/p031.jpg" width="1600" height="824" alt="Парк Пик Жуи, фото 13" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:2.5806"><button class="zoom" type="button" data-full="img/p032.jpg" aria-label="Открыть фото 14 из 24"><img src="img/p032.jpg" width="1600" height="620" alt="Парк Пик Жуи, фото 14" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p026.jpg" aria-label="Открыть фото 15 из 24"><img src="img/p026.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 15" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p042.jpg" aria-label="Открыть фото 16 из 24"><img src="img/p042.jpg" width="1600" height="1200" alt="Парк Пик Жуи, фото 16" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p043.jpg" aria-label="Открыть фото 17 из 24"><img src="img/p043.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 17" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p038.jpg" aria-label="Открыть фото 18 из 24"><img src="img/p038.jpg" width="1600" height="1200" alt="Парк Пик Жуи, фото 18" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p036.jpg" aria-label="Открыть фото 19 из 24"><img src="img/p036.jpg" width="1600" height="1200" alt="Парк Пик Жуи, фото 19" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p149.jpg" aria-label="Открыть фото 20 из 24"><img src="img/p149.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 20" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p156.jpg" aria-label="Открыть фото 21 из 24"><img src="img/p156.jpg" width="1600" height="1067" alt="Парк Пик Жуи, фото 21" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p044.jpg" aria-label="Открыть фото 22 из 24"><img src="img/p044.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 22" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p008.jpg" aria-label="Открыть фото 23 из 24"><img src="img/p008.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 23" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p009.jpg" aria-label="Открыть фото 24 из 24"><img src="img/p009.jpg" width="1200" height="1600" alt="Парк Пик Жуи, фото 24" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 24</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="ys-5" data-sight="4">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">05</span><span class="s-date">16 октября, день</span></div>
+        <h3>Большой баньян и деревни</h3>
+        <p class="s-en" lang="sl">Veliki banjan in podeželje <span class="zh">大榕树</span></p>
+        <div class="bi">
+          <p lang="ru">Баньяну больше 1400 лет: воздушные корни превратили одно дерево в целую рощу. Здесь снимали фильм «Третья сестра Лю». Вокруг — банановые заросли, пруды с лотосами и тропы, по которым можно проехать верхом.</p>
+          <p lang="sl" class="en">Banjan je star več kot 1400 let: zračne korenine so eno samo drevo spremenile v cel gaj. Tu so snemali film Tretja sestra Liu. Naokoli so bananovci, ribniki z lotosi in poti, po katerih lahko jahaš.</p>
+        </div>
+        
+        <p class="s-count">13 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Большой баньян и деревни: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p157.jpg" aria-label="Открыть фото 1 из 13"><img src="img/p157.jpg" width="1600" height="1067" alt="Большой баньян и деревни, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p159.jpg" aria-label="Открыть фото 2 из 13"><img src="img/p159.jpg" width="1600" height="1067" alt="Большой баньян и деревни, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p158.jpg" aria-label="Открыть фото 3 из 13"><img src="img/p158.jpg" width="1600" height="1067" alt="Большой баньян и деревни, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p160.jpg" aria-label="Открыть фото 4 из 13"><img src="img/p160.jpg" width="1600" height="1067" alt="Большой баньян и деревни, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p045.jpg" aria-label="Открыть фото 5 из 13"><img src="img/p045.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p046.jpg" aria-label="Открыть фото 6 из 13"><img src="img/p046.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p047.jpg" aria-label="Открыть фото 7 из 13"><img src="img/p047.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p048.jpg" aria-label="Открыть фото 8 из 13"><img src="img/p048.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p049.jpg" aria-label="Открыть фото 9 из 13"><img src="img/p049.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p218.jpg" aria-label="Открыть фото 10 из 13"><img src="img/p218.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p216.jpg" aria-label="Открыть фото 11 из 13"><img src="img/p216.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p006.jpg" aria-label="Открыть фото 12 из 13"><img src="img/p006.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p007.jpg" aria-label="Открыть фото 13 из 13"><img src="img/p007.jpg" width="1200" height="1600" alt="Большой баньян и деревни, фото 13" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 13</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+</section>
+<section class="chapter" id="fh" data-chapter="fh" style="--o1:#3B4FA8;--o2:#D9A441;--o3:#C2577A">
+  <div class="leg-block">
+    <div class="glass-lg leg-card">
+      <div class="leg-text">
+        <p class="eyebrow">Глава 3 · Poglavje 3</p>
+        <p class="leg-route"><span>Яншо</span><svg viewBox="0 0 40 12" aria-hidden="true"><path d="M0 6h36M31 1l6 5-6 5"/></svg><span>Фэнхуан</span></p>
+        <p class="leg-en" lang="sl">Yangshuo → Fenghuang</p>
+        <ul class="leg-meta">
+          <li><span>в пути</span><b>поезд</b></li>
+          <li><span>по прямой</span><b>≈ 360 км</b></li>
+          <li><span>дата</span><b>17 октября</b></li>
+        </ul>
+      </div>
+      <svg class="cmap south " viewBox="390 470 250 300" role="img" aria-label="Карта маршрута"><rect x="390" y="470" width="250" height="300" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.33"/><use href="#land" class="land" style="stroke-width:0.50"/><text class="prov-l" x="602" y="695" text-anchor="middle">ГУАНДУН</text><text class="prov-l" x="441" y="717" text-anchor="middle">ГУАНСИ</text><text class="prov-l" x="539" y="580" text-anchor="middle">ХУНАНЬ</text><text class="prov-l" x="421" y="492" text-anchor="middle">ЧУНЦИН</text><path class="leg done flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:0.75"/><path class="leg done" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:0.75"/><path class="leg now" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:1.08"/><path class="leg todo" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:0.75"/><circle class="city seen" cx="689.6" cy="87.7" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="697.0" y="90.8" text-anchor="start" style="font-size:8.7px">Пекин</text><circle class="city seen" cx="584.1" cy="734" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="576.7" y="747.6" text-anchor="end" style="font-size:8.7px">Гуанчжоу</text><circle class="city seen" cx="491.4" cy="673.6" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="484.0" y="676.7" text-anchor="end" style="font-size:8.7px">Яншо</text><circle class="pulse" cx="461.5" cy="554.8" r="10.42"/><circle class="city now" cx="461.5" cy="554.8" r="4.34" style="stroke-width:1.24"/><text class="city-l now" x="454.1" y="557.9" text-anchor="end" style="font-size:10.5px">Фэнхуан</text><circle class="city next" cx="490.9" cy="510.4" r="3.10" style="stroke-width:1.24"/><text class="city-l next" x="498.3" y="505.4" text-anchor="start" style="font-size:8.7px">Чжанцзяцзе</text></svg>
+    </div>
+  </div>
+  <header class="ch-head">
+    <div class="ch-cover"><img src="img/p057.jpg" width="1600" height="1200" alt="Фэнхуан" loading="lazy" decoding="async"></div>
+    <div class="ch-card glass-lg">
+      <span class="ch-zh" aria-hidden="true">凤凰</span>
+      <p class="eyebrow">17 — 19 октября · Fènghuáng</p>
+      <h2>Фэнхуан <em lang="sl">Fenghuang</em></h2>
+      <p class="ru">Древний город «Феникс» на реке Тоцзян в провинции Хунань. Дома на сваях, каменные мосты и культура народов мяо и туцзя, а ночью вся набережная загорается огнями.</p>
+      <p class="en" lang="sl">Starodavno mesto »Feniks« ob reki Tuojiang v provinci Hunan. Hiše na kolih, kamniti mostovi in kultura ljudstev Miao in Tujia, ponoči pa zažari celotno nabrežje.</p>
+    </div>
+  </header>
+  <div class="places glass-lg">
+    <div class="places-map"><svg class="lmap" viewBox="0 0 640 420" role="img" aria-label="Схема мест: Фэнхуан"><line class="lgrid" x1="40" y1="12" x2="40" y2="408"/><line class="lgrid" x1="100" y1="12" x2="100" y2="408"/><line class="lgrid" x1="160" y1="12" x2="160" y2="408"/><line class="lgrid" x1="220" y1="12" x2="220" y2="408"/><line class="lgrid" x1="280" y1="12" x2="280" y2="408"/><line class="lgrid" x1="340" y1="12" x2="340" y2="408"/><line class="lgrid" x1="400" y1="12" x2="400" y2="408"/><line class="lgrid" x1="460" y1="12" x2="460" y2="408"/><line class="lgrid" x1="520" y1="12" x2="520" y2="408"/><line class="lgrid" x1="580" y1="12" x2="580" y2="408"/><line class="lgrid" x1="12" y1="30" x2="628" y2="30"/><line class="lgrid" x1="12" y1="90" x2="628" y2="90"/><line class="lgrid" x1="12" y1="150" x2="628" y2="150"/><line class="lgrid" x1="12" y1="210" x2="628" y2="210"/><line class="lgrid" x1="12" y1="270" x2="628" y2="270"/><line class="lgrid" x1="12" y1="330" x2="628" y2="330"/><line class="lgrid" x1="12" y1="390" x2="628" y2="390"/><path class="lroute" d="M570.0 244.7 Q544.6 167.1 470.2 133.3 Q295.9 279.9 70.0 250.5 Q339.8 308.6 564.9 148.9"/><a href="#fh-1" class="lpin" data-i="0"><circle cx="570.0" cy="244.7" r="16"/><text class="lnum" x="570.0" y="249.7" text-anchor="middle">1</text><text class="llbl" x="548.0" y="249.7" text-anchor="end">Ночная набережная</text></a><a href="#fh-2" class="lpin" data-i="1"><circle cx="470.2" cy="133.3" r="16"/><text class="lnum" x="470.2" y="138.3" text-anchor="middle">2</text><text class="llbl" x="448.2" y="138.3" text-anchor="end">Костюмы мяо</text></a><a href="#fh-3" class="lpin" data-i="2"><circle cx="70.0" cy="250.5" r="16"/><text class="lnum" x="70.0" y="255.5" text-anchor="middle">3</text><text class="llbl" x="92.0" y="255.5" text-anchor="start">Южная стена</text></a><a href="#fh-4" class="lpin" data-i="3"><circle cx="564.9" cy="148.9" r="16"/><text class="lnum" x="564.9" y="153.9" text-anchor="middle">4</text><text class="llbl" x="586.9" y="153.9" text-anchor="start">Старый город днём</text></a><g class="compass" transform="translate(606,34)"><circle r="17"/><path d="M0 -13 L5 0 L0 13 L-5 0Z"/><path class="n" d="M0 -13 L5 0 L-5 0Z"/></g></svg><p class="note">Схема: расположение условное, порядок — как мы шли</p></div>
+    <ol class="places-list"><li><a href="#fh-1" data-i="0"><span class="pn">1</span><span class="pt"><b>Ночной Фэнхуан</b><small lang="sl">Fenghuang ponoči</small></span></a></li><li><a href="#fh-2" data-i="1"><span class="pn">2</span><span class="pt"><b>Национальные костюмы мяо</b><small lang="sl">Noše ljudstva Miao</small></span></a></li><li><a href="#fh-3" data-i="2"><span class="pn">3</span><span class="pt"><b>Южная Великая стена</b><small lang="sl">Južni kitajski zid</small></span></a></li><li><a href="#fh-4" data-i="3"><span class="pn">4</span><span class="pt"><b>Дневной Фэнхуан</b><small lang="sl">Fenghuang podnevi</small></span></a></li></ol>
+  </div>
+  
+    <article class="sight" id="fh-1" data-sight="0">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">01</span><span class="s-date">17 октября, ночь</span></div>
+        <h3>Ночной Фэнхуан</h3>
+        <p class="s-en" lang="sl">Fenghuang ponoči <span class="zh">凤凰夜景</span></p>
+        <div class="bi">
+          <p lang="ru">С темнотой дома на сваях вдоль Тоцзяна загораются золотом, а мост Хунцяо светится синим. По реке плывут лодки с фонарями, над переулками висят сотни бумажных фонарей.</p>
+          <p lang="sl" class="en">Ko se zmrači, hiše na kolih ob Tuojiangu zažarijo zlato, most Hongqiao pa se obarva modro. Po reki plujejo čolni z lampijoni, nad uličicami visi na stotine papirnatih lampijonov.</p>
+        </div>
+        
+        <p class="s-count">17 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Ночной Фэнхуан: фотографии"><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p057.jpg" aria-label="Открыть фото 1 из 17"><img src="img/p057.jpg" width="1600" height="1200" alt="Ночной Фэнхуан, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p059.jpg" aria-label="Открыть фото 2 из 17"><img src="img/p059.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p054.jpg" aria-label="Открыть фото 3 из 17"><img src="img/p054.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p055.jpg" aria-label="Открыть фото 4 из 17"><img src="img/p055.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p056.jpg" aria-label="Открыть фото 5 из 17"><img src="img/p056.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p058.jpg" aria-label="Открыть фото 6 из 17"><img src="img/p058.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p060.jpg" aria-label="Открыть фото 7 из 17"><img src="img/p060.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p061.jpg" aria-label="Открыть фото 8 из 17"><img src="img/p061.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p064.jpg" aria-label="Открыть фото 9 из 17"><img src="img/p064.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p051.jpg" aria-label="Открыть фото 10 из 17"><img src="img/p051.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p052.jpg" aria-label="Открыть фото 11 из 17"><img src="img/p052.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p066.jpg" aria-label="Открыть фото 12 из 17"><img src="img/p066.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.3333"><button class="zoom" type="button" data-full="img/p069.jpg" aria-label="Открыть фото 13 из 17"><img src="img/p069.jpg" width="1600" height="1200" alt="Ночной Фэнхуан, фото 13" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p065.jpg" aria-label="Открыть фото 14 из 17"><img src="img/p065.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 14" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p067.jpg" aria-label="Открыть фото 15 из 17"><img src="img/p067.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 15" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p068.jpg" aria-label="Открыть фото 16 из 17"><img src="img/p068.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 16" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p062.jpg" aria-label="Открыть фото 17 из 17"><img src="img/p062.jpg" width="1200" height="1600" alt="Ночной Фэнхуан, фото 17" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 17</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="fh-2" data-sight="1">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">02</span><span class="s-date">17–18 октября</span></div>
+        <h3>Национальные костюмы мяо</h3>
+        <p class="s-en" lang="sl">Noše ljudstva Miao <span class="zh">苗族服饰</span></p>
+        <div class="bi">
+          <p lang="ru">Фэнхуан — земля народов мяо и туцзя. Серебряные головные уборы мяо весят по нескольку килограммов и передаются в семьях как приданое; в городе можно примерить костюм и сняться на фоне ночной реки.</p>
+          <p lang="sl" class="en">Fenghuang je dom ljudstev Miao in Tujia. Srebrna pokrivala Miao tehtajo po več kilogramov in se v družinah prenašajo kot dota; v mestu si lahko oblečeš nošo in se fotografiraš ob nočni reki.</p>
+        </div>
+        
+        <p class="s-count">7 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Национальные костюмы мяо: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p003.jpg" aria-label="Открыть фото 1 из 7"><img src="img/p003.jpg" width="1600" height="1067" alt="Национальные костюмы мяо, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p001.jpg" aria-label="Открыть фото 2 из 7"><img src="img/p001.jpg" width="1067" height="1600" alt="Национальные костюмы мяо, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p002.jpg" aria-label="Открыть фото 3 из 7"><img src="img/p002.jpg" width="1067" height="1600" alt="Национальные костюмы мяо, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p004.jpg" aria-label="Открыть фото 4 из 7"><img src="img/p004.jpg" width="1067" height="1600" alt="Национальные костюмы мяо, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p005.jpg" aria-label="Открыть фото 5 из 7"><img src="img/p005.jpg" width="1067" height="1600" alt="Национальные костюмы мяо, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p053.jpg" aria-label="Открыть фото 6 из 7"><img src="img/p053.jpg" width="1200" height="1600" alt="Национальные костюмы мяо, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p071.jpg" aria-label="Открыть фото 7 из 7"><img src="img/p071.jpg" width="1200" height="1600" alt="Национальные костюмы мяо, фото 7" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 7</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="fh-3" data-sight="2">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">03</span><span class="s-date">18 октября</span></div>
+        <h3>Южная Великая стена</h3>
+        <p class="s-en" lang="sl">Južni kitajski zid <span class="zh">南方长城</span></p>
+        <div class="bi">
+          <p lang="ru">Стена, построенная при династии Мин в XVI веке, тянулась почти на 190 км по горам Западной Хунани и отделяла имперские земли от владений мяо. Отреставрированный участок с башнями открыт недалеко от Фэнхуана.</p>
+          <p lang="sl" class="en">Zid, zgrajen v času dinastije Ming v 16. stoletju, se je vlekel skoraj 190 km po gričih zahodnega Hunana in ločeval cesarske dežele od ozemlja Miao. Obnovljeni del s stolpi je odprt blizu Fenghuanga.</p>
+        </div>
+        
+        <p class="s-count">1 фото</p>
+      </div>
+      <div class="slider single" data-slider><div class="track" tabindex="0" aria-label="Южная Великая стена: фотографии"><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p070.jpg" aria-label="Открыть фото 1 из 1"><img src="img/p070.jpg" width="1200" height="1600" alt="Южная Великая стена, фото 1" loading="lazy" decoding="async"></button></figure></div></div>
+    </article>
+    <article class="sight flip" id="fh-4" data-sight="3">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">04</span><span class="s-date">18–19 октября</span></div>
+        <h3>Дневной Фэнхуан</h3>
+        <p class="s-en" lang="sl">Fenghuang podnevi <span class="zh">凤凰古城</span></p>
+        <div class="bi">
+          <p lang="ru">Днём город другой: черепичные крыши с изогнутыми коньками, «прыгающие камни» через реку, пагода Ваньмин и лодки на зелёной воде. В лавках угощают местным чаем.</p>
+          <p lang="sl" class="en">Podnevi je mesto drugačno: strehe z ukrivljenimi slemeni, »skakalni kamni« čez reko, pagoda Wanming in čolni na zeleni vodi. V čajnicah ponudijo domači čaj.</p>
+        </div>
+        
+        <p class="s-count">13 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Дневной Фэнхуан: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p162.jpg" aria-label="Открыть фото 1 из 13"><img src="img/p162.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p165.jpg" aria-label="Открыть фото 2 из 13"><img src="img/p165.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p163.jpg" aria-label="Открыть фото 3 из 13"><img src="img/p163.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p164.jpg" aria-label="Открыть фото 4 из 13"><img src="img/p164.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p166.jpg" aria-label="Открыть фото 5 из 13"><img src="img/p166.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p167.jpg" aria-label="Открыть фото 6 из 13"><img src="img/p167.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p171.jpg" aria-label="Открыть фото 7 из 13"><img src="img/p171.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p172.jpg" aria-label="Открыть фото 8 из 13"><img src="img/p172.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p168.jpg" aria-label="Открыть фото 9 из 13"><img src="img/p168.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p169.jpg" aria-label="Открыть фото 10 из 13"><img src="img/p169.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p170.jpg" aria-label="Открыть фото 11 из 13"><img src="img/p170.jpg" width="1600" height="1067" alt="Дневной Фэнхуан, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p072.jpg" aria-label="Открыть фото 12 из 13"><img src="img/p072.jpg" width="1200" height="1600" alt="Дневной Фэнхуан, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p073.jpg" aria-label="Открыть фото 13 из 13"><img src="img/p073.jpg" width="1200" height="1600" alt="Дневной Фэнхуан, фото 13" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 13</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+</section>
+<section class="chapter" id="zj" data-chapter="zj" style="--o1:#6E8FA6;--o2:#8DA68A;--o3:#B9A58E">
+  <div class="leg-block">
+    <div class="glass-lg leg-card">
+      <div class="leg-text">
+        <p class="eyebrow">Глава 4 · Poglavje 4</p>
+        <p class="leg-route"><span>Фэнхуан</span><svg viewBox="0 0 40 12" aria-hidden="true"><path d="M0 6h36M31 1l6 5-6 5"/></svg><span>Чжанцзяцзе</span></p>
+        <p class="leg-en" lang="sl">Fenghuang → Zhangjiajie</p>
+        <ul class="leg-meta">
+          <li><span>в пути</span><b>поезд</b></li>
+          <li><span>по прямой</span><b>≈ 160 км</b></li>
+          <li><span>дата</span><b>19 октября</b></li>
+        </ul>
+      </div>
+      <svg class="cmap south " viewBox="390 470 250 300" role="img" aria-label="Карта маршрута"><rect x="390" y="470" width="250" height="300" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.33"/><use href="#land" class="land" style="stroke-width:0.50"/><text class="prov-l" x="602" y="695" text-anchor="middle">ГУАНДУН</text><text class="prov-l" x="441" y="717" text-anchor="middle">ГУАНСИ</text><text class="prov-l" x="539" y="580" text-anchor="middle">ХУНАНЬ</text><text class="prov-l" x="421" y="492" text-anchor="middle">ЧУНЦИН</text><path class="leg done flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:0.75"/><path class="leg done" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:0.75"/><path class="leg done" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:0.75"/><path class="leg now" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:1.08"/><circle class="city seen" cx="689.6" cy="87.7" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="697.0" y="90.8" text-anchor="start" style="font-size:8.7px">Пекин</text><circle class="city seen" cx="584.1" cy="734" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="576.7" y="747.6" text-anchor="end" style="font-size:8.7px">Гуанчжоу</text><circle class="city seen" cx="491.4" cy="673.6" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="484.0" y="676.7" text-anchor="end" style="font-size:8.7px">Яншо</text><circle class="city seen" cx="461.5" cy="554.8" r="3.10" style="stroke-width:1.24"/><text class="city-l seen" x="454.1" y="557.9" text-anchor="end" style="font-size:8.7px">Фэнхуан</text><circle class="pulse" cx="490.9" cy="510.4" r="10.42"/><circle class="city now" cx="490.9" cy="510.4" r="4.34" style="stroke-width:1.24"/><text class="city-l now" x="498.3" y="505.4" text-anchor="start" style="font-size:10.5px">Чжанцзяцзе</text></svg>
+    </div>
+  </div>
+  <header class="ch-head">
+    <div class="ch-cover"><img src="img/p207.jpg" width="1600" height="1067" alt="Чжанцзяцзе" loading="lazy" decoding="async"></div>
+    <div class="ch-card glass-lg">
+      <span class="ch-zh" aria-hidden="true">张家界</span>
+      <p class="eyebrow">19 — 22 октября · Zhāngjiājiè</p>
+      <h2>Чжанцзяцзе <em lang="sl">Zhangjiajie</em></h2>
+      <p class="ru">Край каменных столбов в провинции Хунань. Тысячи песчаниковых пиков, тонущих в тумане, вдохновили создателей «Аватара» на парящие горы Пандоры.</p>
+      <p class="en" lang="sl">Dežela kamnitih stebrov v provinci Hunan. Tisoči peščenjakovih vrhov, ki tonejo v meglo, so navdihnili lebdeče gore Pandore v filmu Avatar.</p>
+    </div>
+  </header>
+  <div class="places glass-lg">
+    <div class="places-map"><svg class="lmap" viewBox="0 0 640 420" role="img" aria-label="Схема мест: Чжанцзяцзе"><line class="lgrid" x1="40" y1="12" x2="40" y2="408"/><line class="lgrid" x1="100" y1="12" x2="100" y2="408"/><line class="lgrid" x1="160" y1="12" x2="160" y2="408"/><line class="lgrid" x1="220" y1="12" x2="220" y2="408"/><line class="lgrid" x1="280" y1="12" x2="280" y2="408"/><line class="lgrid" x1="340" y1="12" x2="340" y2="408"/><line class="lgrid" x1="400" y1="12" x2="400" y2="408"/><line class="lgrid" x1="460" y1="12" x2="460" y2="408"/><line class="lgrid" x1="520" y1="12" x2="520" y2="408"/><line class="lgrid" x1="580" y1="12" x2="580" y2="408"/><line class="lgrid" x1="12" y1="30" x2="628" y2="30"/><line class="lgrid" x1="12" y1="90" x2="628" y2="90"/><line class="lgrid" x1="12" y1="150" x2="628" y2="150"/><line class="lgrid" x1="12" y1="210" x2="628" y2="210"/><line class="lgrid" x1="12" y1="270" x2="628" y2="270"/><line class="lgrid" x1="12" y1="330" x2="628" y2="330"/><line class="lgrid" x1="12" y1="390" x2="628" y2="390"/><path class="lroute" d="M301.3 261.9 Q292.9 313.6 325.4 354.8 Q310.0 220.0 399.0 117.6 Q323.4 88.1 250.6 124.0 Q272.3 76.3 322.1 60.0"/><a href="#zj-1" class="lpin" data-i="0"><circle cx="301.3" cy="261.9" r="16"/><text class="lnum" x="301.3" y="266.9" text-anchor="middle">1</text><text class="llbl" x="323.3" y="266.9" text-anchor="start">Башня 72 чудес</text></a><a href="#zj-2" class="lpin" data-i="1"><circle cx="325.4" cy="354.8" r="16"/><text class="lnum" x="325.4" y="359.8" text-anchor="middle">2</text><text class="llbl" x="347.4" y="359.8" text-anchor="start">Тяньмэнь</text></a><a href="#zj-3" class="lpin" data-i="2"><circle cx="399.0" cy="117.6" r="16"/><text class="lnum" x="399.0" y="122.6" text-anchor="middle">3</text><text class="llbl" x="421.0" y="122.6" text-anchor="start">Лифт Байлун</text></a><a href="#zj-4" class="lpin" data-i="3"><circle cx="250.6" cy="124.0" r="16"/><text class="lnum" x="250.6" y="129.0" text-anchor="middle">4</text><text class="llbl" x="272.6" y="129.0" text-anchor="start">Юаньцзяцзе</text></a><a href="#zj-5" class="lpin" data-i="4"><circle cx="322.1" cy="60.0" r="16"/><text class="lnum" x="322.1" y="65.0" text-anchor="middle">5</text><text class="llbl" x="344.1" y="65.0" text-anchor="start">Тяньцзы</text></a><g class="compass" transform="translate(606,34)"><circle r="17"/><path d="M0 -13 L5 0 L0 13 L-5 0Z"/><path class="n" d="M0 -13 L5 0 L-5 0Z"/></g></svg><p class="note">Схема: расположение условное, порядок — как мы шли</p></div>
+    <ol class="places-list"><li><a href="#zj-1" data-i="0"><span class="pn">1</span><span class="pt"><b>Башня 72 чудес</b><small lang="sl">Stolp 72 čudes</small></span></a></li><li><a href="#zj-2" data-i="1"><span class="pn">2</span><span class="pt"><b>Гора Тяньмэнь</b><small lang="sl">Gora Tianmen</small></span></a></li><li><a href="#zj-3" data-i="2"><span class="pn">3</span><span class="pt"><b>Улинъюань и лифт Байлун</b><small lang="sl">Wulingyuan in dvigalo Bailong</small></span></a></li><li><a href="#zj-4" data-i="3"><span class="pn">4</span><span class="pt"><b>Юаньцзяцзе — горы «Аватара»</b><small lang="sl">Yuanjiajie – gore iz Avatarja</small></span></a></li><li><a href="#zj-5" data-i="4"><span class="pn">5</span><span class="pt"><b>Гора Тяньцзы</b><small lang="sl">Gora Tianzi</small></span></a></li></ol>
+  </div>
+  
+    <article class="sight" id="zj-1" data-sight="0">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">01</span><span class="s-date">19 октября, вечер</span></div>
+        <h3>Башня 72 чудес</h3>
+        <p class="s-en" lang="sl">Stolp 72 čudes <span class="zh">七十二奇楼</span></p>
+        <div class="bi">
+          <p lang="ru">Огромный ночной квартал в центре Чжанцзяцзе, построенный как гигантский дом на сваях в стиле туцзя. Вечером он вспыхивает подсветкой; внутри — улочки с лавками, стены из фарфоровых тарелок и танцы у костра.</p>
+          <p lang="sl" class="en">Ogromen nočni kompleks v središču Zhangjiajieja, zgrajen kot velikanska hiša na kolih v slogu ljudstva Tujia. Zvečer zažari v lučeh; v notranjosti so uličice s trgovinami, stene iz porcelanastih krožnikov in plesi ob ognju.</p>
+        </div>
+        
+        <p class="s-count">16 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Башня 72 чудес: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p175.jpg" aria-label="Открыть фото 1 из 16"><img src="img/p175.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p176.jpg" aria-label="Открыть фото 2 из 16"><img src="img/p176.jpg" width="1067" height="1600" alt="Башня 72 чудес, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p182.jpg" aria-label="Открыть фото 3 из 16"><img src="img/p182.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p078.jpg" aria-label="Открыть фото 4 из 16"><img src="img/p078.jpg" width="1200" height="1600" alt="Башня 72 чудес, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p173.jpg" aria-label="Открыть фото 5 из 16"><img src="img/p173.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p174.jpg" aria-label="Открыть фото 6 из 16"><img src="img/p174.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p179.jpg" aria-label="Открыть фото 7 из 16"><img src="img/p179.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p183.jpg" aria-label="Открыть фото 8 из 16"><img src="img/p183.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p184.jpg" aria-label="Открыть фото 9 из 16"><img src="img/p184.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p180.jpg" aria-label="Открыть фото 10 из 16"><img src="img/p180.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p181.jpg" aria-label="Открыть фото 11 из 16"><img src="img/p181.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p074.jpg" aria-label="Открыть фото 12 из 16"><img src="img/p074.jpg" width="1200" height="1600" alt="Башня 72 чудес, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p076.jpg" aria-label="Открыть фото 13 из 16"><img src="img/p076.jpg" width="1200" height="1600" alt="Башня 72 чудес, фото 13" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p077.jpg" aria-label="Открыть фото 14 из 16"><img src="img/p077.jpg" width="1200" height="1600" alt="Башня 72 чудес, фото 14" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p177.jpg" aria-label="Открыть фото 15 из 16"><img src="img/p177.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 15" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p178.jpg" aria-label="Открыть фото 16 из 16"><img src="img/p178.jpg" width="1600" height="1067" alt="Башня 72 чудес, фото 16" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 16</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="zj-2" data-sight="1">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">02</span><span class="s-date">20 октября</span></div>
+        <h3>Гора Тяньмэнь</h3>
+        <p class="s-en" lang="sl">Gora Tianmen <span class="zh">天门山</span></p>
+        <div class="bi">
+          <p lang="ru">«Гора Небесных врат» высотой 1518 метров. Из центра города наверх идёт одна из самых длинных канатных дорог мира, около 7,5 км; у вершины — природная арка высотой 131 м, тропы над обрывом и храм Тяньмэнь. В тот день гора утонула в тумане.</p>
+          <p lang="sl" class="en">»Gora Nebeških vrat«, visoka 1518 metrov. Iz središča mesta vodi nanjo ena najdaljših gondol na svetu, dolga približno 7,5 km; blizu vrha so 131 metrov visok naravni obok, poti nad prepadi in tempelj Tianmen. Tisti dan je gora utonila v megli.</p>
+        </div>
+        
+        <p class="s-count">23 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Гора Тяньмэнь: фотографии"><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p191.jpg" aria-label="Открыть фото 1 из 23"><img src="img/p191.jpg" width="1067" height="1600" alt="Гора Тяньмэнь, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p192.jpg" aria-label="Открыть фото 2 из 23"><img src="img/p192.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p196.jpg" aria-label="Открыть фото 3 из 23"><img src="img/p196.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p193.jpg" aria-label="Открыть фото 4 из 23"><img src="img/p193.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p194.jpg" aria-label="Открыть фото 5 из 23"><img src="img/p194.jpg" width="1067" height="1600" alt="Гора Тяньмэнь, фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p195.jpg" aria-label="Открыть фото 6 из 23"><img src="img/p195.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p204.jpg" aria-label="Открыть фото 7 из 23"><img src="img/p204.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p185.jpg" aria-label="Открыть фото 8 из 23"><img src="img/p185.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p186.jpg" aria-label="Открыть фото 9 из 23"><img src="img/p186.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p187.jpg" aria-label="Открыть фото 10 из 23"><img src="img/p187.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p188.jpg" aria-label="Открыть фото 11 из 23"><img src="img/p188.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p189.jpg" aria-label="Открыть фото 12 из 23"><img src="img/p189.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p079.jpg" aria-label="Открыть фото 13 из 23"><img src="img/p079.jpg" width="1200" height="1600" alt="Гора Тяньмэнь, фото 13" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p197.jpg" aria-label="Открыть фото 14 из 23"><img src="img/p197.jpg" width="1067" height="1600" alt="Гора Тяньмэнь, фото 14" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p198.jpg" aria-label="Открыть фото 15 из 23"><img src="img/p198.jpg" width="1067" height="1600" alt="Гора Тяньмэнь, фото 15" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p199.jpg" aria-label="Открыть фото 16 из 23"><img src="img/p199.jpg" width="1067" height="1600" alt="Гора Тяньмэнь, фото 16" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p200.jpg" aria-label="Открыть фото 17 из 23"><img src="img/p200.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 17" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p080.jpg" aria-label="Открыть фото 18 из 23"><img src="img/p080.jpg" width="1200" height="1600" alt="Гора Тяньмэнь, фото 18" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p201.jpg" aria-label="Открыть фото 19 из 23"><img src="img/p201.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 19" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p202.jpg" aria-label="Открыть фото 20 из 23"><img src="img/p202.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 20" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p203.jpg" aria-label="Открыть фото 21 из 23"><img src="img/p203.jpg" width="1600" height="1067" alt="Гора Тяньмэнь, фото 21" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p081.jpg" aria-label="Открыть фото 22 из 23"><img src="img/p081.jpg" width="1200" height="1600" alt="Гора Тяньмэнь, фото 22" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p082.jpg" aria-label="Открыть фото 23 из 23"><img src="img/p082.jpg" width="1200" height="1600" alt="Гора Тяньмэнь, фото 23" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 23</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="zj-3" data-sight="2">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">03</span><span class="s-date">21 октября, утро</span></div>
+        <h3>Улинъюань и лифт Байлун</h3>
+        <p class="s-en" lang="sl">Wulingyuan in dvigalo Bailong <span class="zh">武陵源 · 百龙天梯</span></p>
+        <div class="bi">
+          <p lang="ru">Улинъюань — объект Всемирного наследия ЮНЕСКО с 1992 года: из леса здесь поднимаются более трёх тысяч песчаниковых столбов. Стеклянный лифт Байлун меньше чем за две минуты поднимает на 326 метров прямо по скале.</p>
+          <p lang="sl" class="en">Wulingyuan je od leta 1992 na Unescovem seznamu svetovne dediščine: iz gozda se tu dviga več kot tri tisoč peščenjakovih stebrov. Stekleno dvigalo Bailong te v manj kot dveh minutah dvigne 326 metrov naravnost po steni.</p>
+        </div>
+        
+        <p class="s-count">2 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Улинъюань и лифт Байлун: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p205.jpg" aria-label="Открыть фото 1 из 2"><img src="img/p205.jpg" width="1600" height="1067" alt="Улинъюань и лифт Байлун, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p083.jpg" aria-label="Открыть фото 2 из 2"><img src="img/p083.jpg" width="1200" height="1600" alt="Улинъюань и лифт Байлун, фото 2" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 2</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight flip" id="zj-4" data-sight="3">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">04</span><span class="s-date">21 октября, день</span></div>
+        <h3>Юаньцзяцзе — горы «Аватара»</h3>
+        <p class="s-en" lang="sl">Yuanjiajie – gore iz Avatarja <span class="zh">袁家界</span></p>
+        <div class="bi">
+          <p lang="ru">Главная смотровая зона парка. Столб «Южная небесная колонна» в 2010 году переименовали в «Гору Аллилуйя» из «Аватара». Тропы идут по краю обрывов, а рядом с дорожками живут макаки-резусы.</p>
+          <p lang="sl" class="en">Najbolj znano razgledno območje parka. Steber »Južni nebesni steber« so leta 2010 preimenovali v »Goro Aleluja« iz Avatarja. Poti vodijo po robovih prepadov, ob njih pa živijo makaki rezusi.</p>
+        </div>
+        
+        <p class="s-count">16 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Юаньцзяцзе — горы «Аватара»: фотографии"><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p206.jpg" aria-label="Открыть фото 1 из 16"><img src="img/p206.jpg" width="1067" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:2.0305"><button class="zoom" type="button" data-full="img/p087.jpg" aria-label="Открыть фото 2 из 16"><img src="img/p087.jpg" width="1600" height="788" alt="Юаньцзяцзе — горы «Аватара», фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p207.jpg" aria-label="Открыть фото 3 из 16"><img src="img/p207.jpg" width="1600" height="1067" alt="Юаньцзяцзе — горы «Аватара», фото 3" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:3.1008"><button class="zoom" type="button" data-full="img/p088.jpg" aria-label="Открыть фото 4 из 16"><img src="img/p088.jpg" width="1600" height="516" alt="Юаньцзяцзе — горы «Аватара», фото 4" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p089.jpg" aria-label="Открыть фото 5 из 16"><img src="img/p089.jpg" width="1200" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 5" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.0000"><button class="zoom" type="button" data-full="img/p085.jpg" aria-label="Открыть фото 6 из 16"><img src="img/p085.jpg" width="1600" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 6" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p090.jpg" aria-label="Открыть фото 7 из 16"><img src="img/p090.jpg" width="1200" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 7" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p208.jpg" aria-label="Открыть фото 8 из 16"><img src="img/p208.jpg" width="1600" height="1067" alt="Юаньцзяцзе — горы «Аватара», фото 8" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p210.jpg" aria-label="Открыть фото 9 из 16"><img src="img/p210.jpg" width="1067" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 9" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p211.jpg" aria-label="Открыть фото 10 из 16"><img src="img/p211.jpg" width="1600" height="1067" alt="Юаньцзяцзе — горы «Аватара», фото 10" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p209.jpg" aria-label="Открыть фото 11 из 16"><img src="img/p209.jpg" width="1067" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 11" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.6669"><button class="zoom" type="button" data-full="img/p212.jpg" aria-label="Открыть фото 12 из 16"><img src="img/p212.jpg" width="1067" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 12" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p213.jpg" aria-label="Открыть фото 13 из 16"><img src="img/p213.jpg" width="1600" height="1067" alt="Юаньцзяцзе — горы «Аватара», фото 13" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p214.jpg" aria-label="Открыть фото 14 из 16"><img src="img/p214.jpg" width="1600" height="1067" alt="Юаньцзяцзе — горы «Аватара», фото 14" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p091.jpg" aria-label="Открыть фото 15 из 16"><img src="img/p091.jpg" width="1200" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 15" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p092.jpg" aria-label="Открыть фото 16 из 16"><img src="img/p092.jpg" width="1200" height="1600" alt="Юаньцзяцзе — горы «Аватара», фото 16" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 16</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+    <article class="sight" id="zj-5" data-sight="4">
+      <div class="sight-text glass-lg">
+        <div class="s-top"><span class="s-num">05</span><span class="s-date">21 октября, вечер</span></div>
+        <h3>Гора Тяньцзы</h3>
+        <p class="s-en" lang="sl">Gora Tianzi <span class="zh">天子山</span></p>
+        <div class="bi">
+          <p lang="ru">«Гора Сына Неба» поднимается на 1262 метра. С её площадок открывается «море пиков»: сотни каменных столбов уходят к горизонту, особенно красиво в дымке.</p>
+          <p lang="sl" class="en">»Gora Sina nebes« se dviga 1262 metrov visoko. Z njenih razgledišč se odpre »morje vrhov«: na stotine kamnitih stebrov, ki segajo do obzorja, najlepše v meglici.</p>
+        </div>
+        
+        <p class="s-count">3 фото</p>
+      </div>
+      <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Гора Тяньцзы: фотографии"><figure class="slide" style="--ar:1.4995"><button class="zoom" type="button" data-full="img/p215.jpg" aria-label="Открыть фото 1 из 3"><img src="img/p215.jpg" width="1600" height="1067" alt="Гора Тяньцзы, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p093.jpg" aria-label="Открыть фото 2 из 3"><img src="img/p093.jpg" width="1200" height="1600" alt="Гора Тяньцзы, фото 2" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p094.jpg" aria-label="Открыть фото 3 из 3"><img src="img/p094.jpg" width="1200" height="1600" alt="Гора Тяньцзы, фото 3" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 3</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+    </article>
+</section>
+
+<section class="interlude" id="home">
+  <div class="glass-lg inter-card">
+    <p class="eyebrow">Эпилог · 22 — 23 октября</p>
+    <h2>Дорога домой <em>Pot domov</em></h2>
+    <p class="ru">22 октября — аэропорт Чжанцзяцзе, 23-го — снова Пекин Дасин и дорога домой.</p><p class="en" lang="sl">22. oktobra smo odleteli iz Zhangjiajieja, 23. pa je sledil spet Peking Daxing in pot domov.</p>
+  </div>
+  <div class="slider" data-slider><div class="track" tabindex="0" aria-label="Дорога домой: фотографии"><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p095.jpg" aria-label="Открыть фото 1 из 2"><img src="img/p095.jpg" width="1200" height="1600" alt="Дорога домой, фото 1" loading="lazy" decoding="async"></button></figure><figure class="slide" style="--ar:0.7500"><button class="zoom" type="button" data-full="img/p096.jpg" aria-label="Открыть фото 2 из 2"><img src="img/p096.jpg" width="1200" height="1600" alt="Дорога домой, фото 2" loading="lazy" decoding="async"></button></figure></div><div class="sl-ui"><button class="gbtn prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="count"><b>1</b> / 2</span><button class="gbtn next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+</section>
+<footer class="foot">
+  <div class="glass-lg foot-card">
+    <svg class="cmap full " viewBox="300 20 600 850" role="img" aria-label="Карта маршрута"><rect x="300" y="20" width="600" height="850" class="sea"/><path d="M139.8 1022.5V-161.1M307.3 1022.5V-161.1M474.9 1022.5V-161.1M642.4 1022.5V-161.1M809.9 1022.5V-161.1M977.4 1022.5V-161.1M-27.7 846.8H1011.0M-27.7 665.4H1011.0M-27.7 476.4H1011.0M-27.7 277.7H1011.0M-27.7 66.3H1011.0" class="grat" style="stroke-width:0.80"/><use href="#land" class="land" style="stroke-width:1.20"/><text class="sea-l" x="835" y="269" text-anchor="middle" style="font-size:13.0px">Жёлтое море</text><text class="sea-l" x="835" y="507" text-anchor="middle" style="font-size:13.0px">Восточно-Китайское</text><text class="sea-l" x="835" y="523" text-anchor="middle" style="font-size:13.0px">море</text><text class="sea-l" x="642" y="864" text-anchor="middle" style="font-size:13.0px">Южно-Китайское</text><text class="sea-l" x="642" y="880" text-anchor="middle" style="font-size:13.0px">море</text><path class="leg done flight" d="M689.6 87.7 Q753.2 429.8 584.1 734" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M584.1 734 Q520.8 729.8 491.4 673.6" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M491.4 673.6 Q443.2 622.6 461.5 554.8" pathLength="100" style="stroke-width:1.80"/><path class="leg done" d="M461.5 554.8 Q463.8 524.4 490.9 510.4" pathLength="100" style="stroke-width:1.80"/><path class="leg back flight" d="M490.9 510.4 Q660.25 309.05 689.6 87.7" pathLength="100" style="stroke-width:1.60"/><circle class="city seen" cx="689.6" cy="87.7" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="704.6" y="94.0" text-anchor="start" style="font-size:17.5px">Пекин</text><circle class="city seen" cx="584.1" cy="734" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="569.1" y="761.5" text-anchor="end" style="font-size:17.5px">Гуанчжоу</text><circle class="city seen" cx="491.4" cy="673.6" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="476.4" y="679.9" text-anchor="end" style="font-size:17.5px">Яншо</text><circle class="city seen" cx="461.5" cy="554.8" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="446.5" y="561.0" text-anchor="end" style="font-size:17.5px">Фэнхуан</text><circle class="city seen" cx="490.9" cy="510.4" r="6.25" style="stroke-width:2.50"/><text class="city-l seen" x="505.9" y="500.4" text-anchor="start" style="font-size:17.5px">Чжанцзяцзе</text></svg>
+    <div><p class="zh-sign" aria-hidden="true">中国 · 二〇二六</p><p>Гуанчжоу · Яншо · Фэнхуан · Чжанцзяцзе</p><a class="top-link" href="#top">Наверх ↑</a></div>
+  </div>
+</footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Просмотр фото">
+  <img alt="">
+  <button class="gbtn lb-x" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="gbtn lb-p" type="button" aria-label="Предыдущее"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="gbtn lb-n" type="button" aria-label="Следующее"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <span class="lb-c"></span>
+</dialog>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* sliders */
+  document.querySelectorAll('[data-slider]').forEach(function(sl){
+    var tr=sl.querySelector('.track'),slides=[].slice.call(tr.children),cnt=sl.querySelector('.count b'),
+        pv=sl.querySelector('.prev'),nx=sl.querySelector('.next');
+    function idx(){var x=tr.scrollLeft,best=0,bd=1e9;slides.forEach(function(s,i){var d=Math.abs(s.offsetLeft-tr.offsetLeft-x);if(d<bd){bd=d;best=i;}});
+      if(tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4)best=slides.length-1;return best;}
+    function upd(){var i=idx();if(cnt)cnt.textContent=i+1;if(pv)pv.disabled=tr.scrollLeft<4;if(nx)nx.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;}
+    function go(d){var i=Math.max(0,Math.min(slides.length-1,idx()+d));tr.scrollTo({left:slides[i].offsetLeft-tr.offsetLeft,behavior:reduce?'auto':'smooth'});}
+    if(pv)pv.addEventListener('click',function(){go(-1)});
+    if(nx)nx.addEventListener('click',function(){go(1)});
+    tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}});
+    var t;tr.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,60)},{passive:true});
+    upd();
+    slides.forEach(function(s,i){var b=s.querySelector('.zoom');if(b)b.addEventListener('click',function(){openLb(slides.map(function(x){return x.querySelector('.zoom').dataset.full}),i)})});
+  });
+
+  /* lightbox */
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbC=lb.querySelector('.lb-c'),list=[],cur=0;
+  function show(){lbImg.src=list[cur];lbC.textContent=(cur+1)+' / '+list.length;}
+  function openLb(l,i){list=l;cur=i;show();if(lb.showModal)lb.showModal();else lb.setAttribute('open','');}
+  function step(d){cur=(cur+d+list.length)%list.length;show();}
+  lb.querySelector('.lb-x').addEventListener('click',function(){lb.close()});
+  lb.querySelector('.lb-p').addEventListener('click',function(){step(-1)});
+  lb.querySelector('.lb-n').addEventListener('click',function(){step(1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1)});
+  var sx=null;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null});
+
+  if(!('IntersectionObserver' in window))return;
+
+  /* active chapter: orbs + nav */
+  var navA={};document.querySelectorAll('[data-nav]').forEach(function(a){navA[a.dataset.nav]=a});
+  var chs=[].slice.call(document.querySelectorAll('[data-chapter]'));
+  var hero=getComputedStyle(root);var base=['--o1','--o2','--o3'].map(function(k){return hero.getPropertyValue(k)});
+  function setPal(el){var cs=el?getComputedStyle(el):null;['--o1','--o2','--o3'].forEach(function(k,i){root.style.setProperty(k,cs?cs.getPropertyValue(k):base[i])});}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var k=e.target.dataset.chapter;
+      for(var n in navA)navA[n].classList.toggle('on',n===k);setPal(e.target);});},{rootMargin:'-45% 0px -50% 0px'});
+  chs.forEach(function(c){io.observe(c)});
+  var topIo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var n in navA)navA[n].classList.remove('on');setPal(null);}})},{rootMargin:'-45% 0px -50% 0px'});
+  ['top','prologue','home'].forEach(function(id){var el=document.getElementById(id);if(el)topIo.observe(el)});
+
+  /* draw route legs when maps come into view */
+  var mio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');mio.unobserve(e.target);}})},{threshold:.35});
+  document.querySelectorAll('.cmap').forEach(function(m){mio.observe(m)});
+
+  /* active sight → highlight its pin and list item */
+  var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var ch=e.target.closest('[data-chapter]'),i=e.target.dataset.sight;
+      ch.querySelectorAll('.lpin,.places-list a').forEach(function(p){p.classList.toggle('on',p.dataset.i===i)});});},{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('[data-sight]').forEach(function(s){sio.observe(s)});
+
+  /* reveal on scroll (only things below the first screen) */
+  if(!reduce){var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}})},{threshold:.08});
+    document.querySelectorAll('.leg-card,.ch-head,.places,.sight-text,.slider,.inter-card,.foot-card').forEach(function(el){
+      if(el.getBoundingClientRect().top>innerHeight){el.classList.add('rv');rio.observe(el);}});
+    addEventListener('beforeprint',function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})});}
+
+  /* progress in the nav */
+  var bar=document.querySelector('.nav .prog i'),tk=false;
+  function prog(){var h=document.documentElement.scrollHeight-innerHeight;bar.style.setProperty('--p',h>0?Math.min(1,scrollY/h):0);tk=false;}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(prog)}},{passive:true});prog();
+})();
+</script>
+</body>
+</html>
